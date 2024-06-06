@@ -1,7 +1,7 @@
 {
-    "name": "Sample PWA",
-    "short_name": "Sample",
-    "start_url": "/sample.html",
+    "name": "Gem Runner PWA",
+    "short_name": "Gem Runner",
+    "start_url": "/gem-runner",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",
