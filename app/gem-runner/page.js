@@ -5,15 +5,6 @@ import styles from "../page.module.css";
 export default function GemRunner() {
   // This is overhead needed for PWA to work.
   useEffect(() => {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then(function(registration) {
-          console.log('Service Worker registered with scope:', registration.scope);
-        }).catch(function(error) {
-          console.log('Service Worker registration failed:', error);
-        });
-    }
-
     const link = document.createElement('link');
     link.rel = 'manifest';
     link.href = '/manifest.json';
