@@ -1,0 +1,11 @@
+{
+    "build": {
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "commands": {
+        "prebuild": "npm install --legacy-peer-deps"
+      }
+    }
+  }
+  
