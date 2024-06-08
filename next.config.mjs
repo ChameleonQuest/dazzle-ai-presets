@@ -4,7 +4,7 @@ import withPWA from 'next-pwa';
 // const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
-  // reactStrictMode: true,
+  // reactStrictMode: true
   experimental: {
     turbo: {}, // Enabling Turbopack
   },  
