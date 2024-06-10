@@ -1,10 +1,10 @@
 // /app/gem-saver/page.js
 "use client";
-import { useEffect, Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
-export default function GemSaverPage() {
+function GemSaverContent() {
   const searchParams = useSearchParams();
   const name = searchParams.get('name');
   const description = searchParams.get('description');
@@ -13,28 +13,33 @@ export default function GemSaverPage() {
   useEffect(() => {
     const link = document.createElement('link');
     link.rel = 'manifest';
-    // link.href = '/manifest.json';
     link.href = `/api/dynamic-manifest?name=${encodeURIComponent(name)}`;
-    console.log("link.href",link.href);
+    console.log("link.href", link.href);
     document.head.appendChild(link);
-  }, []);
+  }, [name]);
 
   return (
+    <div>
+      <h1>Your app is ready!</h1>
+      <div>please use the "Add to Home Screen" option in your browser.</div>
+      <div>
+        <strong>Name:</strong> {name}
+      </div>
+      <div>
+        <strong>Description:</strong> {description}
+      </div>
+      <div>
+        <strong>Context:</strong> {context}
+      </div>
+      <Link href="/">Back to Home</Link>
+    </div>
+  );
+}
+
+export default function GemSaverPage() {
+  return (
     <Suspense fallback={<div>Loading...</div>}>
-        <div>
-        <h1>Your app is ready!</h1>
-        <div>please use the "Add to Home Screen" option in your browser.</div>
-        <div>
-            <strong>Name:</strong> {name}
-        </div>
-        <div>
-            <strong>Description:</strong> {description}
-        </div>
-        <div>
-            <strong>Context:</strong> {context}
-        </div>
-        <Link href="/">Back to Home</Link>
-        </div>
-    </Suspense>    
+      <GemSaverContent />
+    </Suspense>
   );
 }
