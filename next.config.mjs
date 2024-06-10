@@ -7,6 +7,7 @@ const nextConfig = {
   // reactStrictMode: true
   experimental: {
     turbo: {}, // Enabling Turbopack
+    missingSuspenseWithCSRBailout: false,
   },  
 };
 
