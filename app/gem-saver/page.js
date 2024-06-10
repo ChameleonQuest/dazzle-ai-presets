@@ -1,6 +1,6 @@
 // /app/gem-saver/page.js
 "use client";
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
@@ -20,19 +20,21 @@ export default function GemSaverPage() {
   }, []);
 
   return (
-    <div>
-      <h1>Your app is ready!</h1>
-      <div>please use the "Add to Home Screen" option in your browser.</div>
-      <div>
-        <strong>Name:</strong> {name}
-      </div>
-      <div>
-        <strong>Description:</strong> {description}
-      </div>
-      <div>
-        <strong>Context:</strong> {context}
-      </div>
-      <Link href="/">Back to Home</Link>
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+        <div>
+        <h1>Your app is ready!</h1>
+        <div>please use the "Add to Home Screen" option in your browser.</div>
+        <div>
+            <strong>Name:</strong> {name}
+        </div>
+        <div>
+            <strong>Description:</strong> {description}
+        </div>
+        <div>
+            <strong>Context:</strong> {context}
+        </div>
+        <Link href="/">Back to Home</Link>
+        </div>
+    </Suspense>    
   );
 }
