@@ -1,35 +1,12 @@
 'use client'
-import { useState } from 'react';
+import { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import styles from "../page.module.css";
 
-export default function GemRunner() {
-  const [name, setName] = useState('');
-  const handleInputChange = (e) => {
-    setName(e.target.value);
-  };
+function GemRunnerContent() {
+  const searchParams = useSearchParams();
+  const name = searchParams.get('name');
 
-  // This is overhead needed for PWA to work.
-  // useEffect(() => {
-  //   const link = document.createElement('link');
-  //   link.rel = 'manifest';
-  //   // link.href = '/manifest.json';
-  //   link.href = `/api/dynamic-manifest?name=${encodeURIComponent(name)}`
-  //   document.head.appendChild(link);
-  // }, []);
-
-  const saveAsPWA = () => {
-    // const link = document.createElement('link');
-    // link.rel = 'manifest';
-    // // link.href = '/manifest.json';
-    // link.href = `/api/dynamic-manifest?name=${encodeURIComponent(name)}`
-    // document.head.appendChild(link);
-
-    // if (window.matchMedia('(display-mode: standalone)').matches) {
-    //   window.location.href = '/sample.html';
-    // } else {
-    //   alert('To save the PWA, please use the "Add to Home Screen" option in your browser.');
-    // }
-  };
     
   return (
     <div className={styles.page}>
@@ -37,12 +14,18 @@ export default function GemRunner() {
         <div className={styles.ctas}>
           <div>Gem PWA</div>
           <div>
-          name:{name}<br></br>
-            <input type="text" value={name} onChange={handleInputChange} placeholder="Enter PWA Name" />
-            <button onClick={saveAsPWA}>Save Sample Page as PWA</button>
+            name:{name}<br></br>
           </div>
         </div>
       </main>
     </div>
+  );
+}
+
+export default function GemRunnerPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <GemRunnerContent />
+    </Suspense>
   );
 }

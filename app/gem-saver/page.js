@@ -18,6 +18,7 @@ function GemSaverContent() {
     document.head.appendChild(link);
   }, [name]);
 
+  // TODO: Detect browser and show how to save PWA on that browser.
   return (
     <div>
       <h1>Your app is ready!</h1>

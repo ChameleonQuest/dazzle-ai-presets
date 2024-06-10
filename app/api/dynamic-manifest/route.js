@@ -5,7 +5,7 @@ export async function GET(request) {
     const manifest = {
       name,
       short_name: name,
-      start_url: "/gem-runner",
+      start_url: `/gem-runner?name=${encodeURIComponent(name)}`,
       display: "standalone",
       background_color: "#ffffff",
       description: "A dynamically named PWA",
