@@ -14,8 +14,7 @@ function GemSaverContent() {
   useEffect(() => {
     const link = document.createElement('link');
     link.rel = 'manifest';
-    // link.href = `/api/dynamic-manifest?name=${encodeURIComponent(name)}`;
-    link.href = `/api/manifest/${encodeURIComponent(appName)}`;
+    link.href = `/${appName}/api/manifest`;
     console.log("link.href", link.href);
     document.head.appendChild(link);
   }, [appName]);
@@ -24,7 +23,7 @@ function GemSaverContent() {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker
-          .register(`/api/service-worker/${appName}`, { scope: `/${appName}` })
+          .register(`/${appName}/api/service-worker`, { scope: `/${appName}` })
           .then((registration) => {
             console.log('Service Worker registered with scope:', registration.scope);
           })

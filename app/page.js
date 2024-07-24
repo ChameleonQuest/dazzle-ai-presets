@@ -11,7 +11,6 @@ export default function HomePage() {
   const router = useRouter();
 
   const handleSubmit = () => {
-    // router.push(`/gem-saver?name=${encodeURIComponent(name)}&description=${encodeURIComponent(description)}&context=${encodeURIComponent(context)}`);
     router.push(`${name}/gem-saver?&description=${encodeURIComponent(description)}&context=${encodeURIComponent(context)}`);
   };
 

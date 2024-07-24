@@ -7,7 +7,7 @@ export async function GET(req, { params }) {
     let manifest = {
       name: appName,
       short_name: appName,
-      start_url: `/${appName}/gem-runner?name=${encodeURIComponent(appName)}`,
+      start_url: `/${appName}/gem-runner?name=${appName}`,
       display: "standalone",
       background_color: "#cccccc",
       description: `${appName} PWA`,
