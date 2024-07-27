@@ -1,10 +1,13 @@
 export async function GET(req, { params }) {
-    const { appName } = params;
-
+    let { appName } = params;
+    let url = new URL(req.url, `http://${req.headers.host}`);
+    let context = url.searchParams.get('context');
+    let prompt = url.searchParams.get('prompt');
+  
     let manifest = {
       name: appName,
       short_name: appName,
-      start_url: `/${appName}/gem-runner`,
+      start_url: `/${appName}/gem-runner?context=${encodeURIComponent(context)}&prompt=${encodeURIComponent(prompt)}`,
       display: "standalone",
       background_color: "#cccccc",
       description: `${appName} PWA`,

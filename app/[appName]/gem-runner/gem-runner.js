@@ -1,25 +1,28 @@
 'use client'
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useParams } from 'next/navigation';
 import styles from "../../page.module.css";
 
 
 function GemRunnerContent() {
-    const searchParams = useSearchParams();
-    const { appName } = useParams();
+    let searchParams = useSearchParams();
+    let initialContext = searchParams.get('context');
+    let initialPrompt = searchParams.get('prompt');
+    let { appName } = useParams();
 
-    const [promptLog, setPromptLog] = useState({
-        "messages":[
-        {"role": "system", "content": "You provide concise answers, with no disclaimers. They are in the form of a rhyme."}
-    ]});
-    const [newPrompt, setNewPrompt] = useState("hi");
-    const [isGenerating, setIsGenerating] = useState(false);  
+    let initialMessages = [ {"role": "system", "content": initialContext} ];
+    // if (initialPrompt)
+    //     initialMessages.push({"role": "user", "content": initialPrompt});
 
-    const handleSubmit = async () => {
-        let updatedMessages = [...promptLog.messages, { role: "user", content: newPrompt }];
-        // console.log("newPrompt",newPrompt,"ammendedLog",ammendedLog, "promptLog", promptLog);
+    let [promptLog, setPromptLog] = useState({ "messages":initialMessages});
+    let [newPrompt, setNewPrompt] = useState("hi");
+    let [isGenerating, setIsGenerating] = useState(false);  
+
+    let callGemini = async (prompt) => {
+        let updatedMessages = [...promptLog.messages, { role: "user", content: prompt }];
+        console.log("newPrompt",newPrompt,"updatedMessages",updatedMessages, "promptLog", promptLog);
         let stringPrompt = updatedMessages.map(msg => `${msg.role}: ${msg.content}`).join('\n');
-        // console.log("stringPrompt", stringPrompt);
+        console.log("stringPrompt", stringPrompt);
         setIsGenerating(true);
 
         fetch('/api/gemini-caller', {
@@ -40,11 +43,20 @@ function GemRunnerContent() {
         });
     };
 
+    useEffect(() => {
+        if (initialPrompt)
+            callGemini(initialPrompt);
+    }, []);
+
+    let handleSubmit = async () => {
+        callGemini(newPrompt);
+    }
+
     return (
     <div className={styles.page}>
         <main className={styles.main}>
         <div className={styles.ctas}>
-            <div>Gem PWA</div>
+            <div>Gemm PWA</div>
             <div>
             name:{appName}
             <br></br>

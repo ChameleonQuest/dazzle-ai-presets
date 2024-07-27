@@ -28,11 +28,19 @@ html, body {
     background-repeat: no-repeat;  
 }
 
-html, body, input, button {
+html, body, input, button, textarea {
     font-family: 'Roboto', sans-serif;
     font-size: 1.2rem;
 }
 
+input, textarea {
+    font-size: 1rem;
+}
+
+textarea {
+    width: 100%;
+    height: 4rem;
+}
 
 .overlay {
     position: absolute;
@@ -85,8 +93,9 @@ a {
 }
 
 .page-content {
-    height:80%;
-    width:80%;
+    /* height:80%; */
+    /* width:80%; */
+    margin: auto;
     padding: 24px;
     background: rgba(50, 50, 50, 0.2); /* Adjust the alpha value to control the bleach effect */
     background-color: rgba(255, 255, 255, 0.8);
