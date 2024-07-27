@@ -18,30 +18,24 @@ export default function HomePage() {
     <div className="page-container">
         <div className="page-content">
             <h1>Dazzle </h1>
-            <h3 style={{marginBottom: 2 + 'rem'}}>
-                <div> Dazzle will create a convenient AI app shortcut for you. </div>
-                <div> Configure your AI presets below. </div>
-            </h3>
+            <h2 style={{marginBottom: 1 + 'rem'}}>
+                <p> Dazzle will create a convenient AI app shortcut for you. </p>
+            </h2>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>
-                    App Name:
-                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-                    </label>
+                <div className="form-row">
+                    <div className="form-label">*App Name:</div>
+                    <div className="form-value"><input type="text" value={name} onChange={(e) => setName(e.target.value)} /></div>
                 </div>
-                <div>
-                    <div>
-                    AI Context:
-                    </div>
-                    <textarea value={context} onChange={(e) => setContext(e.target.value)} />
+                <div className="form-row">
+                    <div className="form-label">*AI Context:</div>
+                    <div className="form-value"><textarea value={context} onChange={(e) => setContext(e.target.value)} /></div>
                 </div>
-                <div>
-                    <label>
-                    Initial Prompt (Optional):
-                    <input type="text" value={prompt} onChange={(e) => setPrompt(e.target.value)} />
-                    </label>
+                <div className="form-row">
+                    <div className="form-label">Initial Prompt:</div>
+                    <div className="form-value"><textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} /></div>
                 </div>
-                <button type="submit">Save AI Preset</button>
+
+                <button type="submit" style={{alignSelf: 'center'}}>Save AI Shortcut</button>
             </form>
         </div>
     </div>
