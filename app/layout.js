@@ -2,16 +2,18 @@ import "./globals.css";
 
 // TODO: Uncomment this without creating build errors.
 export const metadata = {
-  title: "Dazzle AI Presets",
-  description: "Save your AI context once, then run it from your home screen.",
+title: "Dazzle AI Presets",
+description: "Save your AI context once, then run it from your home screen.",
 };
 
 export default function RootLayout({ children }) {
-  return (
+return (
     <html lang="en">
-      <body>
-        {children}
-      </body>
+    <body>
+        <div className="overlay">
+            {children}
+        </div>
+    </body>
     </html>
-  );
+);
 }

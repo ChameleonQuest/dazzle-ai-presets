@@ -6,7 +6,6 @@ import Link from 'next/link';
 
 function GemSaverContent() {
   const searchParams = useSearchParams();
-  // const name = searchParams.get('name');
   const { appName } = useParams();
   const description = searchParams.get('description');
   const context = searchParams.get('context');
