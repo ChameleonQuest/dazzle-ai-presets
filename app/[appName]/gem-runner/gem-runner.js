@@ -5,10 +5,7 @@ import styles from "../../page.module.css";
 
 
 function GemRunnerContent() {
-    //    const { appName } = params;
-
     const searchParams = useSearchParams();
-    // const name = searchParams.get('name');
     const { appName } = useParams();
 
     const [promptLog, setPromptLog] = useState({
