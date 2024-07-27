@@ -1,13 +1,10 @@
 export async function GET(req, { params }) {
     const { appName } = params;
 
-    // let { searchParams } = new URL(request.url);
-    // let appName = searchParams.get('name') || 'Default App Name';
-  
     let manifest = {
       name: appName,
       short_name: appName,
-      start_url: `/${appName}/gem-runner?name=${appName}`,
+      start_url: `/${appName}/gem-runner`,
       display: "standalone",
       background_color: "#cccccc",
       description: `${appName} PWA`,

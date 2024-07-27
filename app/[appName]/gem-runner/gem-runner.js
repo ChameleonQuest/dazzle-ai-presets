@@ -1,6 +1,6 @@
 'use client'
 import { Suspense, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useParams } from 'next/navigation';
 import styles from "../../page.module.css";
 
 
@@ -8,7 +8,9 @@ function GemRunnerContent() {
     //    const { appName } = params;
 
     const searchParams = useSearchParams();
-    const name = searchParams.get('name');
+    // const name = searchParams.get('name');
+    const { appName } = useParams();
+
     const [promptLog, setPromptLog] = useState({
         "messages":[
         {"role": "system", "content": "You provide concise answers, with no disclaimers. They are in the form of a rhyme."}
@@ -47,7 +49,7 @@ function GemRunnerContent() {
         <div className={styles.ctas}>
             <div>Gem PWA</div>
             <div>
-            name:{name}
+            name:{appName}
             <br></br>
             </div>
         </div>

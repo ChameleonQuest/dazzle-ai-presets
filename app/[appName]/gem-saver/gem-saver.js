@@ -20,16 +20,21 @@ useEffect(() => {
 
 useEffect(() => {
     if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker
-        .register(`/${appName}/api/service-worker`, { scope: `/${appName}` })
-        .then((registration) => {
-            console.log('Service Worker registered with scope:', registration.scope);
-        })
-        .catch((error) => {
-            console.log('Service Worker registration failed:', error);
+        window.addEventListener('load', () => {
+            navigator.serviceWorker
+            .register(`/${appName}/api/service-worker`, { scope: `/${appName}` })
+            .then((registration) => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch((error) => {
+                console.log('Service Worker registration failed:', error);
+            });
         });
-    });
+
+        window.addEventListener('appinstalled', (event) => {
+            // This resolves an issue where after the initial installation, the user stayed on this page instead of the start_url from the manifest.
+            window.location.href = `/${appName}/gem-runner`;
+        });
     }
 }, [appName]);
 
