@@ -110,11 +110,11 @@ h2 {
 div {
     padding-bottom: 24px;
 }
-
+/* 
 body {
     color: var(--foreground);
     background: var(--background);
-}
+} */
 
 * {
     box-sizing: border-box;
