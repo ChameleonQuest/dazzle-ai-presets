@@ -42,16 +42,16 @@ function GemSaverContent() {
     <div className="page-container">
         <main className="page-content">
             <h1>Your app is ready</h1>
-            <div>Please use the "Add to Home Screen" option in your browser.</div>
+            <h2>Please use the "Add to Home Screen" option in your browser.</h2>
             <div>
-                <strong>Name:</strong> {appName}
+                <strong>App Name:</strong> {appName}
             </div>
-            <div>
+            {/* <div>
                 <strong>Context:</strong> {context}
             </div>
             <div>
                 <strong>Prompt:</strong> {prompt}
-            </div>
+            </div> */}
         </main>
     </div>
     );

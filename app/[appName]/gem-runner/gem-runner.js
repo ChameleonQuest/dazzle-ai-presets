@@ -29,7 +29,7 @@ function GemRunnerContent() {
         // console.log("stringPrompt", stringPrompt);
         setIsGenerating(true);
 
-        fetch('/api/gemini-caller', {
+        fetch('/api/gemini-caller-no-realtime', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({"prompt":stringPrompt})

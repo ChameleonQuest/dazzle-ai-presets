@@ -4,11 +4,15 @@ import { useState } from 'react';
 import './home.css';
 
 export default function HomePage() {
-    const [name, setName] = useState('Donut');
-    const [context, setContext] = useState('When prompted with anything, give me a random name of a donut. Be brief.');
+    const [name, setName] = useState('Inspire');
+    const [context, setContext] = useState('When prompted, provide an inspirational quote about achieving your goals.');
+    // const [context, setContext] = useState('When prompted with anything, give me a random name of a donut. Be brief.');
     // const [context, setContext] = useState('When asked, tell me the Summer Olympics 2024 events which are schedule for today. Be brief.');
+    // const [context, setContext] = useState('When prompted, tell me the current time in Texas, France and New Zealand.');
+    // const [context, setContext] = useState('You tell the current weather. Just a brief number estimate such as 80 fahrenheit.');
     
-    const [prompt, setPrompt] = useState('aaaand Go!');
+    const [prompt, setPrompt] = useState('Go!');
+    // const [prompt, setPrompt] = useState('Whats the weather in New York?');
     const maxCharacters = 1000;
 
     const handleSubmit = e => {

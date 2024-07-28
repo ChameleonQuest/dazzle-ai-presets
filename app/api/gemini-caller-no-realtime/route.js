@@ -1,11 +1,8 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export async function POST(request) {
-    // const { searchParams } = new URL(request.url);
-    console.log("process.env.API_KEY", process.env.API_KEY);
     const params = await request.json();
     console.log("PAAAAAAYLOAD", params);
-
 
     const genAI = new GoogleGenerativeAI(process.env.API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
@@ -14,8 +11,6 @@ export async function POST(request) {
     const theoutput = response.text();
   
     return new Response(JSON.stringify(theoutput), {
-      headers: {
-        'Content-Type': 'application/json',
-      },
+        headers: { 'Content-Type': 'application/json', },
     });
-  }
+}
