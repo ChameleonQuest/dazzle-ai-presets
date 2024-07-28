@@ -14,7 +14,7 @@
   padding: 80px;
   gap: 64px;
   font-synthesis: none;
-  background-color: #aaa;
+  /* background-color: #aaa; */
 }
 
 @media (prefers-color-scheme: dark) {

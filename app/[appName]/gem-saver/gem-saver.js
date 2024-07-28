@@ -40,7 +40,7 @@ function GemSaverContent() {
     // TODO: Detect browser and show how to save PWA on that browser.
     return (
     <div className="page-container">
-        <div className="page-content">
+        <main className="page-content">
             <h1>Your app is ready</h1>
             <div>Please use the "Add to Home Screen" option in your browser.</div>
             <div>
@@ -52,7 +52,7 @@ function GemSaverContent() {
             <div>
                 <strong>Prompt:</strong> {prompt}
             </div>
-        </div>
+        </main>
     </div>
     );
 }

@@ -19,7 +19,7 @@ export default function HomePage() {
 
     return (
     <div className="page-container">
-        <div className="page-content">
+        <main className="page-content">
             <h1>Dazzle </h1>
             <h2 style={{marginBottom: 1 + 'rem'}}>
                 <p> Dazzle will create a convenient AI app shortcut for you. </p>
@@ -50,7 +50,7 @@ export default function HomePage() {
 
                 <button type="submit" style={{alignSelf: 'center'}}>Save AI Shortcut</button>
             </form>
-        </div>
+        </main>
     </div>
     );
 }

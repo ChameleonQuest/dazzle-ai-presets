@@ -53,27 +53,27 @@ function GemRunnerContent() {
     }
 
     return (
-    <div className={styles.page}>
-        <main className={styles.main}>
-        <div className={styles.ctas}>
-            <div>Gemm PWA</div>
-            <div>
-            name:{appName}
-            <br></br>
+    <div className="page-container">
+        <main className="page-content">
+            <div className={styles.ctas}>
+                <div>Gemm PWA</div>
+                <div>
+                name:{appName}
+                <br></br>
+                </div>
             </div>
-        </div>
-        <div>
-            {/* {messages && <div>{output}</div>} */}
-            {promptLog?.messages.map((message, index) => (
-            <div key={index}>{message.content}</div>
-            ))}
-        </div>
-        <div>
-            <input type="text" placeholder="Enter your prompt" value={newPrompt} onChange={(e) => setNewPrompt(e.target.value)} />
-            <button onClick={handleSubmit} disabled={isGenerating}>
-            {isGenerating ? "Generating..." : "Submit"}
-            </button>
-        </div>
+            <div>
+                {/* {messages && <div>{output}</div>} */}
+                {promptLog?.messages.map((message, index) => (
+                    <div key={index}>{message.content}</div>
+                ))}
+            </div>
+            <div>
+                <input type="text" placeholder="Enter your prompt" value={newPrompt} onChange={(e) => setNewPrompt(e.target.value)} />
+                <button onClick={handleSubmit} disabled={isGenerating}>
+                    {isGenerating ? "Generating..." : "Submit"}
+                </button>
+            </div>
         </main>
     </div>
     );
