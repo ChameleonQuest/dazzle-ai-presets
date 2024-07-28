@@ -4,9 +4,12 @@ import { useState } from 'react';
 import './home.css';
 
 export default function HomePage() {
-    const [name, setName] = useState('somename');
-    const [context, setContext] = useState('When asked, show me the current time in Texas, New Zealand, and France. Be brief and display each on a separate lines.');
-    const [prompt, setPrompt] = useState('Show me the time');
+    const [name, setName] = useState('Donut');
+    const [context, setContext] = useState('When prompted with anything, give me a random name of a donut. Be brief.');
+    // const [context, setContext] = useState('When asked, tell me the Summer Olympics 2024 events which are schedule for today. Be brief.');
+    
+    const [prompt, setPrompt] = useState('aaaand Go!');
+    const maxCharacters = 1000;
 
     const handleSubmit = e => {
         e.preventDefault(); 
@@ -28,11 +31,21 @@ export default function HomePage() {
                 </div>
                 <div className="form-row">
                     <div className="form-label">*AI Context:</div>
-                    <div className="form-value"><textarea value={context} onChange={(e) => setContext(e.target.value)} /></div>
+                    <div className="form-value">
+                        <textarea maxLength="1000" value={context} onChange={(e) => setContext(e.target.value)} />
+                        <div className="form-subscript">
+                            {context.length} / {maxCharacters}
+                        </div>
+                    </div>
                 </div>
                 <div className="form-row">
                     <div className="form-label">Initial Prompt:</div>
-                    <div className="form-value"><textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} /></div>
+                    <div className="form-value">
+                        <textarea maxLength="1000" value={prompt} onChange={(e) => setPrompt(e.target.value)} />
+                        <div className="form-subscript">
+                            {prompt.length} / {maxCharacters}
+                        </div>
+                    </div>
                 </div>
 
                 <button type="submit" style={{alignSelf: 'center'}}>Save AI Shortcut</button>

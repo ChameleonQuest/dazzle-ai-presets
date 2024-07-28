@@ -15,7 +15,7 @@ function GemRunnerContent() {
     //     initialMessages.push({"role": "user", "content": initialPrompt});
 
     let [promptLog, setPromptLog] = useState({ "messages":initialMessages});
-    let [newPrompt, setNewPrompt] = useState("hi");
+    let [newPrompt, setNewPrompt] = useState("Again!");
     let [isGenerating, setIsGenerating] = useState(false);  
 
     let callGemini = async (prompt) => {
