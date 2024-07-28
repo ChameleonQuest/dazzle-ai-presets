@@ -93,6 +93,7 @@ form {
 
 button {
     padding: 12px;
+    min-width: 180px;
     background-color: #bf21f3;
 }
 
@@ -110,11 +111,6 @@ h2 {
 div {
     padding-bottom: 24px;
 }
-/* 
-body {
-    color: var(--foreground);
-    background: var(--background);
-} */
 
 * {
     box-sizing: border-box;
