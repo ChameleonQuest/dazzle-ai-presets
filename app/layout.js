@@ -1,4 +1,7 @@
 import "./globals.css";
+import "./non-mobile.css";
+import "./mobile.css";
+
 
 // TODO: Uncomment this without creating build errors.
 export const metadata = {

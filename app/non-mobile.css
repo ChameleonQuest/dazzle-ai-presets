@@ -1,0 +1,42 @@
+.form-label {
+    font-size: 1rem;
+    padding-top:12px;
+    padding-right:12px;
+    padding-bottom: 0px;
+    width: 28%;
+}
+
+.form-value {
+    min-width: 50%;
+    padding-bottom: 0px;
+    width: 72%;
+}
+
+.form-subscript {
+    font-size: .5rem;
+    margin-top: 4px;
+}
+
+button {
+    border-radius: 10px;
+    min-width: 180px;
+    padding: 12px;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+html, body, button {
+    font-size: 1.2rem;
+}
+
+input, textarea {
+    font-size: 1rem;
+    padding:8px;
+}
+
+textarea {
+    width: 100%;
+    height: 4rem;
+}

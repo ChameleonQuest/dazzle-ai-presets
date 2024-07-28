@@ -59,23 +59,31 @@ function GemRunnerContent() {
 
     return (
     <div className="page-container">
-        <main className="page-content">
-            <h1> {appName} </h1>
-            <div>
-                {/* {messages && <div>{output}</div>} */}
-                {promptLog?.messages.map((message, index) => (
-                    <div key={index} style={{fontSize: '.7rem'}}>
-                        {message.content}
-                    </div>
-                ))}
+        <main className="page-content" style={{paddingRight: '0px'}}>
+            <div style={{overflowY: 'auto', height: '98%', margin: '0px', paddingRight: '24px'}}>
+                <h1> {appName} </h1>
+                <div>
+                    {/* {messages && <div>{output}</div>} */}
+                    {promptLog?.messages.map((message, index) => (
+                        <div 
+                            key={index} 
+                            style={{ 
+                                fontSize: '.7rem', 
+                                fontStyle: message.role === "assistant" ? 'italic' : 'normal'
+                            }}
+                        >
+                            {message.content}
+                        </div>
+                    ))}
+                </div>
+                <div>
+                    <textarea type="text" placeholder="prompt" value={newPrompt} onChange={(e) => setNewPrompt(e.target.value)} style={{height:'55px'}} />
+                    <button onClick={handleSubmit} disabled={isGenerating}>
+                        {isGenerating ? "Generating..." : "Send"}
+                    </button>
+                </div>
+                <span id="bottom-anchor"></span>
             </div>
-            <div>
-                <input type="text" placeholder="prompt" value={newPrompt} onChange={(e) => setNewPrompt(e.target.value)} style={{height:'55px'}}/>
-                <button onClick={handleSubmit} disabled={isGenerating}>
-                    {isGenerating ? "Generating..." : "Send"}
-                </button>
-            </div>
-            <span id="bottom-anchor"></span>
         </main>
     </div>
     );

@@ -42,9 +42,9 @@ function GemSaverContent() {
     <div className="page-container">
         <main className="page-content">
             <h1>Your app is ready</h1>
-            <h2>Please use the "Add to Home Screen" option in your browser.</h2>
-            <div>
-                <strong>App Name:</strong> {appName}
+            <div style={{alignSelf: 'center'}}>
+                <h2>Please use the "Add to Home Screen" option in your browser.</h2>
+                <span style={{fontWeight: '700'}}>App Name:</span> {appName}
             </div>
             {/* <div>
                 <strong>Context:</strong> {context}
