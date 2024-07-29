@@ -1,11 +1,13 @@
 // /app/gem-saver/page.js
 "use client";
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useParams } from 'next/navigation';
 
 function GemSaverContent() {
     const searchParams = useSearchParams();
     const { appName } = useParams();
+    let isAppInstalled = true;
+
     const context = searchParams.get('context');
     const prompt = searchParams.get('prompt');
 
@@ -16,12 +18,15 @@ function GemSaverContent() {
         document.head.appendChild(link);
     }, [appName]);
 
+    const redirectToGemRunner = () => {
+        window.location.href = `/${appName}/gem-runner?context=${encodeURIComponent(context)}&prompt=${encodeURIComponent(prompt)}`;
+    };
+
     useEffect(() => {
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', async () => {
                 const relatedApps = await navigator.getInstalledRelatedApps();
                 console.log("load event, relatedApps", relatedApps);
-                // console.log("matchMedia",window.matchMedia());
 
                 navigator.serviceWorker
                 .register(`/${appName}/api/service-worker`, { scope: `/${appName}` })
@@ -33,15 +38,19 @@ function GemSaverContent() {
                 });
             });
 
-            // This event only fires if the app is not installed. 
+            // This block of code is for the scenario when someone has the app installed but is 
+            // visiting the app saving page, in which case we want to redirect them to the running app.
+            // Couldn't figure out a cleaner way to do this. We don't know if the app is installed 
+            // when the page loads. But if it is not installed, we find out soon after the page loads.
+            setTimeout(() => {if (isAppInstalled) redirectToGemRunner()}, 100);
             window.addEventListener('beforeinstallprompt', (e) => {
                 console.log("App is not installed",e);
-                alert("not installed");
+                isAppInstalled = false;
             });
 
             window.addEventListener('appinstalled', (event) => {
                 // This resolves an issue where after the initial installation, the user stayed on this page instead of the start_url from the manifest.
-                window.location.href = `/${appName}/gem-runner?context=${encodeURIComponent(context)}&prompt=${encodeURIComponent(prompt)}`;
+                redirectToGemRunner();
             });
         }
     }, [appName]);
