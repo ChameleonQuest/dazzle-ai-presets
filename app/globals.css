@@ -21,6 +21,10 @@ html, body, input, button, textarea {
     font-family: 'Roboto', sans-serif;
 }
 
+input {
+    background-color: white;
+}
+
 .overlay {
     position: absolute;
     top: 0;
@@ -53,6 +57,7 @@ form {
 
 .form-value {
     display: inline-block;
+    /* background-color: white; */
     /* border: green solid; */
 }
 
@@ -89,12 +94,6 @@ div {
 a {
     color: inherit;
     text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-    html {
-        color-scheme: dark;
-    }
 }
 
 .page-container {
