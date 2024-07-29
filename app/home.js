@@ -10,6 +10,7 @@ export default function HomePage() {
     // const [context, setContext] = useState('When asked, tell me the Summer Olympics 2024 events which are schedule for today. Be brief.');
     // const [context, setContext] = useState('When prompted, tell me the current time in Texas, France and New Zealand.');
     // const [context, setContext] = useState('You tell the current weather. Just a brief number estimate such as 80 fahrenheit.');
+    // const [context, setContext] = useState('When prompted, give me a cool use-case idea for Google Gemini API. Be brief. 1 to 3 sentences.');
     
     const [prompt, setPrompt] = useState('Go!');
     // const [prompt, setPrompt] = useState('Whats the weather in New York?');

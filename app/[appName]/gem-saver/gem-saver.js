@@ -13,13 +13,16 @@ function GemSaverContent() {
         const link = document.createElement('link');
         link.rel = 'manifest';
         link.href = `/${appName}/api/manifest?context=${encodeURIComponent(context)}&prompt=${encodeURIComponent(prompt)}`;
-        console.log("link.href", link.href);
         document.head.appendChild(link);
     }, [appName]);
 
     useEffect(() => {
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
+            window.addEventListener('load', async () => {
+                const relatedApps = await navigator.getInstalledRelatedApps();
+                console.log("load event, relatedApps", relatedApps);
+                // console.log("matchMedia",window.matchMedia());
+
                 navigator.serviceWorker
                 .register(`/${appName}/api/service-worker`, { scope: `/${appName}` })
                 .then((registration) => {
@@ -28,6 +31,12 @@ function GemSaverContent() {
                 .catch((error) => {
                     console.log('Service Worker registration failed:', error);
                 });
+            });
+
+            // This event only fires if the app is not installed. 
+            window.addEventListener('beforeinstallprompt', (e) => {
+                console.log("App is not installed",e);
+                alert("not installed");
             });
 
             window.addEventListener('appinstalled', (event) => {
@@ -60,7 +69,7 @@ function GemSaverContent() {
 export default function GemSaverPage() {
 return (
     <Suspense fallback={<div>Loading...</div>}>
-    <GemSaverContent />
+        <GemSaverContent />
     </Suspense>
 );
 }
