@@ -42,9 +42,8 @@ function GemSaverContent() {
             // visiting the app saving page, in which case we want to redirect them to the running app.
             // Couldn't figure out a cleaner way to do this. We don't know if the app is installed 
             // when the page loads. But if it is not installed, we find out soon after the page loads.
-            setTimeout(() => {if (isAppInstalled) redirectToGemRunner()}, 500);
+            // setTimeout(() => {if (isAppInstalled) redirectToGemRunner()}, 500);
             window.addEventListener('beforeinstallprompt', (e) => {
-                console.log("App is not installed",e);
                 isAppInstalled = false;
             });
 
