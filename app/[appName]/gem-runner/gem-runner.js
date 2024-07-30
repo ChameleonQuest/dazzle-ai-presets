@@ -72,6 +72,15 @@ function GemRunnerContent() {
                                 fontStyle: message.role === "assistant" ? 'italic' : 'normal'
                             }}
                         >
+                            <img
+                                src="/favicon.ico" 
+                                style={{
+                                    height:"20px", 
+                                    position:"relative", 
+                                    top:"5px", 
+                                    paddingRight:"2px",
+                                    display: message.role === "assistant" ? 'inline-block' : 'none'
+                                    }} />
                             {message.content}
                         </div>
                     ))}
