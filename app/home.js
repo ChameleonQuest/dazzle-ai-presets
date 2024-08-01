@@ -18,7 +18,7 @@ export default function HomePage() {
 
     const handleSubmit = e => {
         e.preventDefault(); 
-        const url = `${name}/gem-saver?context=${encodeURIComponent(context)}&prompt=${encodeURIComponent(prompt)}`;
+        const url = `${name}/app-runner?context=${encodeURIComponent(context)}&prompt=${encodeURIComponent(prompt)}`;
         window.open(url, '_blank'); // Open the URL in a new window
     };
 

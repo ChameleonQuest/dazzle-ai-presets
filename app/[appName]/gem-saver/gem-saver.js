@@ -19,7 +19,7 @@ function GemSaverContent() {
     }, [appName]);
 
     const redirectToGemRunner = () => {
-        window.location.href = `/${appName}/gem-runner?context=${encodeURIComponent(context)}&prompt=${encodeURIComponent(prompt)}`;
+        window.location.href = `/${appName}/gem-image-runner?context=${encodeURIComponent(context)}&prompt=${encodeURIComponent(prompt)}`;
     };
 
     useEffect(() => {
