@@ -157,7 +157,7 @@ function GemRunnerContent() {
                         width={360}
                         height={240}
                         videoConstraints={{
-                            facingMode: "user" // Use the front-facing camera
+                            facingMode: "environment" // other option is "user"
                         }}
                         />
                         <button onClick={capture}>Capture Photo</button>
