@@ -78,7 +78,7 @@ function GemRunnerContent() {
     return (
     <div className="page-container">
         <main className="page-content" style={{paddingRight: '0px'}}>
-            <div style={{overflowY: 'auto', height: '98%', margin: '0px', paddingRight: '24px'}}>
+            <div style={{display: 'flex', flexDirection:'column',overflowY: 'auto', height: '98%', margin: '0px', paddingRight: '24px'}}>
                 <h1> {appName} </h1>
                 <div>
                     {/* {messages && <div>{output}</div>} */}
@@ -109,8 +109,7 @@ function GemRunnerContent() {
                         audio={false}
                         ref={webcamRef}
                         screenshotFormat="image/png" // Or 'image/jpeg'
-                        width={250}
-                        height={200}
+                        className="webcam"
                         videoConstraints={{
                             facingMode: "environment" // other option is "user"
                         }}
