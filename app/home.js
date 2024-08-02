@@ -28,7 +28,7 @@ export default function HomePage() {
 
     return (
     <div className="page-container">
-        <main className="page-content">
+        <main className="page-content" style={{flexDirection: 'column'}}>
             <h1> Dazzle </h1>
             <h2 style={{marginBottom: '0rem'}}>
                 <p> Create a convenient AI app shortcut </p>

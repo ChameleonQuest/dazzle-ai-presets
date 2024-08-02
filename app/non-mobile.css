@@ -44,3 +44,9 @@ textarea {
 .webcam {
     width: 250px;
 }
+
+.qr-code {
+    /* border: red solid; */
+    display: flex;
+    justify-content: center;
+}

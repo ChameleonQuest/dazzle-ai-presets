@@ -1,7 +1,9 @@
 'use client'
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { useSearchParams, useParams } from 'next/navigation';
+import QrCode from '../../components/QrCode';
 import Webcam from 'react-webcam';
+import styles from './app-runner.css';
 
 function GemRunnerContent() {
     const webcamRef = useRef(null);
@@ -78,10 +80,9 @@ function GemRunnerContent() {
     return (
     <div className="page-container">
         <main className="page-content" style={{paddingRight: '0px'}}>
-            <div style={{display: 'flex', flexDirection:'column',overflowY: 'auto', height: '98%', margin: '0px', paddingRight: '24px'}}>
+            <div id="layout-chat-block">
                 <h1> {appName} </h1>
-                <div>
-                    {/* {messages && <div>{output}</div>} */}
+                <div style={{paddingBottom: '0px'}}>
                     {promptLog?.messages.map((message, index) => (
                         <div 
                             key={index} 
@@ -103,7 +104,12 @@ function GemRunnerContent() {
                         </div>
                     ))}
                 </div>
-                {/* {imageData ? ( <img src={imageData} /> ) : ( )} */}
+                <span id="bottom-anchor"></span>
+            </div>
+            <div id="layout-webcam-block">
+                <div className="qr-code">
+                    <QrCode />
+                </div>
                 <div style={{display: 'flex', justifyContent: 'center'}}>
                     <Webcam
                         audio={false}
@@ -121,7 +127,7 @@ function GemRunnerContent() {
                         {isGenerating ? "Generating..." : "Analyze"}
                     </button>
                 </div>
-                <span id="bottom-anchor"></span>
+                {/* <span id="bottom-anchor"></span> */}
             </div>
         </main>
     </div>

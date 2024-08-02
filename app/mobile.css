@@ -47,4 +47,8 @@
         max-height: 50vh;
         object-fit: fill;
     }
+
+    .qr-code {
+        display: none;
+    }
 }
