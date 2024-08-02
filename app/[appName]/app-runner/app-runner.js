@@ -18,9 +18,6 @@ function GemRunnerContent() {
     // Effect to run when imageData changes
     useEffect(() => {
         if (imageData !== null) {
-            let updatedMessages = [...promptLog.messages, { role: "user", content: imageData }];
-            // console.log("newPrompt",newPrompt,"updatedMessages",updatedMessages, "promptLog", promptLog);
-            
             setIsGenerating(true);
             
             fetch('/api/gemini-caller-image', {
@@ -30,7 +27,7 @@ function GemRunnerContent() {
             })
             .then(response => response.json())
             .then(data => {
-                updatedMessages = [...updatedMessages, { role: "assistant", content: data }];
+                let updatedMessages = [...promptLog.messages, { role: "assistant", content: data }];
                 setPromptLog({messages: updatedMessages});
                 console.log('Response:', data);
                 setTimeout(() => scrollWindow() , 200);
@@ -82,20 +79,20 @@ function GemRunnerContent() {
                         </div>
                     ))}
                 </div>
-                <div>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
                     {/* <textarea type="text" placeholder="prompt" value={newPrompt} onChange={(e) => setNewPrompt(e.target.value)} style={{height:'55px'}} /> */}
-                    <button onClick={handleSubmit} disabled={isGenerating}>
+                    <button onClick={handleSubmit} disabled={isGenerating} style={{alignSelf: 'center', width: '250px'}}>
                         {isGenerating ? "Generating..." : "Analyze"}
                     </button>
                 </div>
                 {/* {imageData ? ( <img src={imageData} /> ) : ( )} */}
-                <div>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
                     <Webcam
                         audio={false}
                         ref={webcamRef}
                         screenshotFormat="image/png" // Or 'image/jpeg'
-                        width={360}
-                        height={240}
+                        width={250}
+                        height={200}
                         videoConstraints={{
                             facingMode: "environment" // other option is "user"
                         }}
