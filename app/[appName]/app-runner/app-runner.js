@@ -11,9 +11,33 @@ function GemRunnerContent() {
     let { appName } = useParams();
 
     const handleSubmit = () => {
-        const imageSrc = webcamRef.current.getScreenshot();
+        let imageSrc = webcamRef.current.getScreenshot();
         setImageData(imageSrc);
     };
+
+    //// PWA stuff
+    useEffect(() => {
+        let link = document.createElement('link');
+        link.rel = 'manifest';
+        link.href = `/${appName}/api/manifest?context=${encodeURIComponent(initialContext)}}`;
+        document.head.appendChild(link);
+    }, [appName]);
+
+    useEffect(() => {
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', async () => {
+                navigator.serviceWorker
+                .register(`/${appName}/api/service-worker`, { scope: `/${appName}` })
+                .then((registration) => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch((error) => {
+                    console.log('Service Worker registration failed:', error);
+                });
+            });
+        }
+    }, [appName]);
+    //// End PWA stuff
 
     // Effect to run when imageData changes
     useEffect(() => {

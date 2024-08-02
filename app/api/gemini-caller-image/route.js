@@ -1,5 +1,4 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-// import fs from "fs/promises"; // For file system operations
 
 export async function POST(request) {
     let params = await request.json();
@@ -8,16 +7,8 @@ export async function POST(request) {
     // Convert base64 image data to a file for Gemini
     let prompt = params.prompt;
     let base64Data = params.image.split(';base64,')[1];
-    console.log("prompt",prompt);
-    // console.log("base64Data",base64Data);
-    // let imageBuffer = Buffer.from(base64Data, 'base64');
-    // const tempFilePath = './temp_image.png'; // Temporary file
-    // await fs.writeFile(tempFilePath, imageBuffer);
-    // let prompt = 'system: When prompted, provide an inspirational quote about achieving your goals.\n' +
-    // 'user: Go!\n' +
-    // `assistant: "The only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle." - Steve Jobs \n` +
-    // '\n' +
-    // 'user: Can you give me one that mentions cats';
+    // console.log("prompt",prompt);
+
     let image = [{
         inlineData: {
             data: base64Data,
