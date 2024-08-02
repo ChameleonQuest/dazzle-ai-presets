@@ -103,12 +103,6 @@ function GemRunnerContent() {
                         </div>
                     ))}
                 </div>
-                <div style={{display: 'flex', justifyContent: 'center'}}>
-                    {/* <textarea type="text" placeholder="prompt" value={newPrompt} onChange={(e) => setNewPrompt(e.target.value)} style={{height:'55px'}} /> */}
-                    <button onClick={handleSubmit} disabled={isGenerating} style={{alignSelf: 'center', width: '250px'}}>
-                        {isGenerating ? "Generating..." : "Analyze"}
-                    </button>
-                </div>
                 {/* {imageData ? ( <img src={imageData} /> ) : ( )} */}
                 <div style={{display: 'flex', justifyContent: 'center'}}>
                     <Webcam
@@ -122,7 +116,12 @@ function GemRunnerContent() {
                         }}
                     />
                 </div>
-
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                    {/* <textarea type="text" placeholder="prompt" value={newPrompt} onChange={(e) => setNewPrompt(e.target.value)} style={{height:'55px'}} /> */}
+                    <button onClick={handleSubmit} disabled={isGenerating} style={{alignSelf: 'center', width: '250px'}}>
+                        {isGenerating ? "Generating..." : "Analyze"}
+                    </button>
+                </div>
                 <span id="bottom-anchor"></span>
             </div>
         </main>
