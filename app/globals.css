@@ -11,10 +11,10 @@ html, body {
     justify-content: center;
     color: black;
     height: 100vh;
-    background-image: url('/images/dazzle-icon-512x512.png');
+    /* background-image: url('/images/dazzle-icon-512x512.png');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;  
+    background-repeat: no-repeat;   */
 }
 
 html, body, input, button, textarea {
@@ -78,7 +78,7 @@ h1 {
 h2 {
     align-self: center;
     font-size: 1rem;
-    padding-bottom: 28px;
+    padding-bottom: 24px;
 }
 
 div {

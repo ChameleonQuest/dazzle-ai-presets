@@ -2,44 +2,37 @@
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { useSearchParams, useParams } from 'next/navigation';
 import Webcam from 'react-webcam';
-// import styles from "../../page.module.css";
-
 
 function GemRunnerContent() {
-    let searchParams = useSearchParams();
-    let initialContext = searchParams.get('context');
-    let initialPrompt = searchParams.get('prompt');
-    let { appName } = useParams();
-
-    //// Camera stuff
     const webcamRef = useRef(null);
     const [imageData, setImageData] = useState(null);
+    let searchParams = useSearchParams();
+    let initialContext = searchParams.get('context');
+    let { appName } = useParams();
 
-    const capture = React.useCallback(() => {
+    const handleSubmit = () => {
         const imageSrc = webcamRef.current.getScreenshot();
         setImageData(imageSrc);
-    }, [webcamRef]);
+    };
 
     // Effect to run when imageData changes
     useEffect(() => {
         if (imageData !== null) {
             let updatedMessages = [...promptLog.messages, { role: "user", content: imageData }];
             // console.log("newPrompt",newPrompt,"updatedMessages",updatedMessages, "promptLog", promptLog);
-            // let stringPrompt = updatedMessages.map(msg => `${msg.role}: ${msg.content}`).join('\n');
-            // console.log("stringPrompt", stringPrompt);
             
             setIsGenerating(true);
             
             fetch('/api/gemini-caller-image', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({"prompt":imageData})
+                body: JSON.stringify({"prompt":initialContext, "image":imageData})
             })
             .then(response => response.json())
             .then(data => {
                 updatedMessages = [...updatedMessages, { role: "assistant", content: data }];
                 setPromptLog({messages: updatedMessages});
-                // console.log('Response:', data);
+                console.log('Response:', data);
                 setTimeout(() => scrollWindow() , 200);
                 setIsGenerating(false);
             })
@@ -53,55 +46,12 @@ function GemRunnerContent() {
     ////
 
     let initialMessages = [ {"role": "system", "content": initialContext} ];
-    // if (initialPrompt)
-    //     initialMessages.push({"role": "user", "content": initialPrompt});
 
     let [promptLog, setPromptLog] = useState({ "messages":initialMessages});
-    let [newPrompt, setNewPrompt] = useState("Again!");
     let [isGenerating, setIsGenerating] = useState(false);
 
     const scrollWindow = () => {
         document.getElementById("bottom-anchor").scrollIntoView({ behavior: 'smooth' });
-    }
-
-    let callGemini = async (prompt) => {
-        let updatedMessages = [...promptLog.messages, { role: "user", content: prompt }];
-        // console.log("newPrompt",newPrompt,"updatedMessages",updatedMessages, "promptLog", promptLog);
-        let stringPrompt = updatedMessages.map(msg => `${msg.role}: ${msg.content}`).join('\n');
-        // console.log("stringPrompt", stringPrompt);
-        setIsGenerating(true);
-
-        // Capture screenshot
-        // const imageSrc = webcamRef.current.getScreenshot();
-        // setImageData(imageSrc);
-
-
-        fetch('/api/gemini-caller-no-realtime', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({"prompt":stringPrompt})
-        })
-        .then(response => response.json())
-        .then(data => {
-            updatedMessages = [...updatedMessages, { role: "assistant", content: data }];
-            setPromptLog({messages: updatedMessages});
-            // console.log('Response:', data);
-            setTimeout(() => scrollWindow() , 200);
-            setIsGenerating(false);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            setIsGenerating(false);
-        });
-    };
-
-    useEffect(() => {
-        if (initialPrompt)
-            callGemini(initialPrompt);
-    }, []);
-
-    let handleSubmit = async () => {
-        callGemini(newPrompt);
     }
 
     return (
@@ -133,24 +83,14 @@ function GemRunnerContent() {
                     ))}
                 </div>
                 <div>
-                    <textarea type="text" placeholder="prompt" value={newPrompt} onChange={(e) => setNewPrompt(e.target.value)} style={{height:'55px'}} />
+                    {/* <textarea type="text" placeholder="prompt" value={newPrompt} onChange={(e) => setNewPrompt(e.target.value)} style={{height:'55px'}} /> */}
                     <button onClick={handleSubmit} disabled={isGenerating}>
-                        {isGenerating ? "Generating..." : "Send"}
+                        {isGenerating ? "Generating..." : "Analyze"}
                     </button>
                 </div>
-                {/* 
-                    {imageData ? (
-                        <img src={imageData} alt="Captured" />
-                    ) : (
-                    )} 
-                    {imageData && (
-                        <button onClick={downloadImage}>Download</button>
-                    )}
-                     
-                     */}
+                {/* {imageData ? ( <img src={imageData} /> ) : ( )} */}
                 <div>
-
-                        <Webcam
+                    <Webcam
                         audio={false}
                         ref={webcamRef}
                         screenshotFormat="image/png" // Or 'image/jpeg'
@@ -159,8 +99,7 @@ function GemRunnerContent() {
                         videoConstraints={{
                             facingMode: "environment" // other option is "user"
                         }}
-                        />
-                        <button onClick={capture}>Capture Photo</button>
+                    />
                 </div>
 
                 <span id="bottom-anchor"></span>
@@ -171,9 +110,9 @@ function GemRunnerContent() {
 }
 
 export default function GemRunnerPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <GemRunnerContent />
-    </Suspense>
-  );
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <GemRunnerContent />
+        </Suspense>
+    );
 }

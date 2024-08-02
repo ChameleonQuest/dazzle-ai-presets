@@ -11,8 +11,6 @@ function GemRunnerContent() {
     let { appName } = useParams();
 
     let initialMessages = [ {"role": "system", "content": initialContext} ];
-    // if (initialPrompt)
-    //     initialMessages.push({"role": "user", "content": initialPrompt});
 
     let [promptLog, setPromptLog] = useState({ "messages":initialMessages});
     let [newPrompt, setNewPrompt] = useState("Again!");
