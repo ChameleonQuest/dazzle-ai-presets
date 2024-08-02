@@ -6,15 +6,7 @@ import './home.css';
 export default function HomePage() {
     const [name, setName] = useState('ToEnglish');
     const [context, setContext] = useState('When provided an image with text, reply with "Source " then tell me the language detected, followed by a colon, followed by the text translated into English.');
-    // const [context, setContext] = useState('When prompted, provide an inspirational quote about achieving your goals.');
-    // const [context, setContext] = useState('When prompted with anything, give me a random name of a donut. Be brief.');
-    // const [context, setContext] = useState('When provided an image, translate any text into English.');
-    // const [context, setContext] = useState('When prompted, tell me the current time in Texas, France and New Zealand.');
-    // const [context, setContext] = useState('You tell the current weather. Just a brief number estimate such as 80 fahrenheit.');
-    // const [context, setContext] = useState('When prompted, give me a cool use-case idea for Google Gemini API. Be brief. 1 to 3 sentences.');
-    
     const [prompt, setPrompt] = useState();
-    // const [prompt, setPrompt] = useState('Whats the weather in New York?');
     const maxCharacters = 1000;
 
     const handleSubmit = e => {
