@@ -121,7 +121,7 @@ function GemRunnerContent() {
                 <div className="qr-code">
                     <QrCode />
                 </div>
-                <div style={{display: 'flex', justifyContent: 'center'}}>
+                <div className="webcam-wrapper" >
                     <Webcam
                         audio={false}
                         ref={webcamRef}
