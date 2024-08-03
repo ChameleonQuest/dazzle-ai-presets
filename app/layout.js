@@ -13,9 +13,7 @@ export default function RootLayout({ children }) {
 return (
     <html lang="en">
     <body>
-        <div className="overlay">
-            {children}
-        </div>
+        {children}
     </body>
     </html>
 );

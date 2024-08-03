@@ -56,7 +56,6 @@ function GemRunnerContent() {
     }
 
     return (
-    <div className="page-container">
         <main className="page-content" style={{paddingRight: '0px'}}>
             <div style={{overflowY: 'auto', height: '98%', margin: '0px', paddingRight: '24px'}}>
                 <h1> {appName} </h1>
@@ -92,7 +91,6 @@ function GemRunnerContent() {
                 <span id="bottom-anchor"></span>
             </div>
         </main>
-    </div>
     );
 }
 

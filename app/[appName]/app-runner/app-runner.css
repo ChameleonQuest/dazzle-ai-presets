@@ -17,26 +17,13 @@
     width: 300px;
 }
 
+.webcam {
+    width: 250px;
+}
+
 @media (max-width: 768px) {
     div {
         padding-bottom: 0px;
-    }
-
-    .page-content {
-        /* background-color: orange; */
-        /* border: red solid; */
-        flex-direction: column;
-        /* margin-top: 0px; */
-        height: 100%;
-        margin: 0px;
-        min-height: 0%;
-        width: 100%;
-        /* padding: 0px; */
-
-        /* top: 0; */
-        /* display: none; */
-        /* left: 0; */
-        /* position: fixed; */
     }
 
     #layout-chat-block {
@@ -51,9 +38,16 @@
         /* border: purple solid; */
         /* bottom: 0; */
         /* display: none; */
-        height: 90%;
+        /* height: 90%; */
         /* left: 0; */
         /* position: fixed; */
+        margin-top: 12px;
         width: 100%;
+    }
+
+    .webcam {
+        width: 100%;
+        /* max-height: 50vh; */
+        object-fit: fill;
     }
 }

@@ -89,17 +89,17 @@ function GemRunnerContent() {
     }
 
     return (
-    <div className="page-container">
-        <main className="page-content" style={{paddingRight: '0px'}}>
+        <main className="page-content">
             <div id="layout-chat-block">
                 <h1> {appName} </h1>
-                <div style={{paddingBottom: '0px'}}>
+                <div>
                     {promptLog?.messages.map((message, index) => (
                         <div 
                             key={index} 
                             style={{ 
                                 fontSize: '.7rem', 
-                                fontStyle: message.role === "assistant" ? 'italic' : 'normal'
+                                fontStyle: message.role === "assistant" ? 'italic' : 'normal',
+                                paddingBottom: '4px'
                             }}
                         >
                             <img
@@ -132,7 +132,7 @@ function GemRunnerContent() {
                         }}
                     />
                 </div>
-                <div style={{display: 'flex', justifyContent: 'center'}}>
+                <div style={{display: 'flex', justifyContent: 'center', padding: '8px'}}>
                     {/* <textarea type="text" placeholder="prompt" value={newPrompt} onChange={(e) => setNewPrompt(e.target.value)} style={{height:'55px'}} /> */}
                     <button onClick={handleSubmit} disabled={isGenerating} style={{alignSelf: 'center', width: '250px'}}>
                         {isGenerating ? "Generating..." : "Analyze"}
@@ -140,9 +140,8 @@ function GemRunnerContent() {
                 </div>
                 {/* <span id="bottom-anchor"></span> */}
             </div>
+            {showInstallAlert && ( <InstallAlert /> )}
         </main>
-        {showInstallAlert && ( <InstallAlert /> )}
-    </div>
     );
 }
 

@@ -5,7 +5,7 @@ import './home.css';
 
 export default function HomePage() {
     const [name, setName] = useState('ToEnglish');
-    const [context, setContext] = useState('When provided an image with text, reply with "Source " then tell me the language detected, followed by a colon, followed by the text translated into English.');
+    const [context, setContext] = useState('When provided an image with text, reply with the language detected, followed by a dash, followed by the text translated into English.');
     const [prompt, setPrompt] = useState();
     const maxCharacters = 1000;
 
@@ -19,7 +19,6 @@ export default function HomePage() {
     };
 
     return (
-    <div className="page-container">
         <main className="page-content" style={{flexDirection: 'column'}}>
             <h1> Dazzle </h1>
             <h2 style={{marginBottom: '0rem'}}>
@@ -52,6 +51,5 @@ export default function HomePage() {
                 <button type="submit" style={{alignSelf: 'center'}}>Try It Out!</button>
             </form>
         </main>
-    </div>
     );
 }
