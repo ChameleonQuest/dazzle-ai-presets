@@ -1,6 +1,7 @@
 'use client'
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { useSearchParams, useParams } from 'next/navigation';
+import InstallAlert from '../../components/InstallAlert';
 import QrCode from '../../components/QrCode';
 import Webcam from 'react-webcam';
 import styles from './app-runner.css';
@@ -11,6 +12,7 @@ function GemRunnerContent() {
     let searchParams = useSearchParams();
     let initialContext = searchParams.get('context');
     let { appName } = useParams();
+    const [showInstallAlert, setShowInstallAlert] = useState(false);
 
     const handleSubmit = () => {
         let imageSrc = webcamRef.current.getScreenshot();
@@ -36,6 +38,15 @@ function GemRunnerContent() {
                 .catch((error) => {
                     console.log('Service Worker registration failed:', error);
                 });
+            });
+
+            window.addEventListener('beforeinstallprompt', (e) => {
+                console.log("time to install?");
+                setShowInstallAlert(true);
+            });
+
+            window.addEventListener('appinstalled', (event) => {
+                setShowInstallAlert(false);
             });
         }
     }, [appName]);
@@ -130,6 +141,7 @@ function GemRunnerContent() {
                 {/* <span id="bottom-anchor"></span> */}
             </div>
         </main>
+        {showInstallAlert && ( <InstallAlert /> )}
     </div>
     );
 }
