@@ -59,6 +59,7 @@ form {
 
 button {
     background-color: #85b7f8;
+    cursor:pointer;
 }
 
 h1 {
