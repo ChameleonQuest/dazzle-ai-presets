@@ -11,6 +11,7 @@ function GemRunnerContent() {
     const [imageData, setImageData] = useState(null);
     let searchParams = useSearchParams();
     let initialContext = searchParams.get('context');
+    let iconPath = searchParams.get('iconpath');
     let { appName } = useParams();
     const [showInstallAlert, setShowInstallAlert] = useState(false);
 
@@ -23,7 +24,7 @@ function GemRunnerContent() {
     useEffect(() => {
         let link = document.createElement('link');
         link.rel = 'manifest';
-        link.href = `/${appName}/api/manifest?context=${encodeURIComponent(initialContext)}}`;
+        link.href = `/${appName}/api/manifest?context=${encodeURIComponent(initialContext)}}&iconpath=${encodeURIComponent(iconPath)}`;
         document.head.appendChild(link);
     }, [appName]);
 
@@ -41,7 +42,6 @@ function GemRunnerContent() {
             });
 
             window.addEventListener('beforeinstallprompt', (e) => {
-                console.log("time to install?");
                 setShowInstallAlert(true);
             });
 
@@ -91,7 +91,11 @@ function GemRunnerContent() {
     return (
         <main className="page-content">
             <div id="layout-chat-block">
-                <h1> {appName} </h1>
+                <h1>
+                    <img src={iconPath} style={{height: '2.5rem', width: '2.5rem', marginRight: '5px'}} />
+                    {appName}
+                </h1>
+
                 <div>
                     {promptLog?.messages.map((message, index) => (
                         <div 
