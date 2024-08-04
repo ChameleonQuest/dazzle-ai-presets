@@ -1,0 +1,24 @@
+{
+  "samples": [
+    {
+        "app-name": "GrabText",
+        "context": "When shown an image, tell me the text.",
+        "icon-path": "https://res.cloudinary.com/dnt8zrmow/image/upload/v1722801619/fwylvavp5expnqdz7lrj.png"
+    },
+    {
+        "app-name": "GameCash",
+        "context": "When provided an image, identify video games in the image and tell me if there are any that might be worth a lot.",
+        "icon-path": "https://res.cloudinary.com/dnt8zrmow/image/upload/v1722802526/sqifm0oo3se3egytj3hy.png"
+    },
+    {
+        "app-name": "GameDB",
+        "context": "Identify video games in the image. List them in a JSON array with properties console, title, year. Also add a property called metacritic with the metacritic score.",
+        "icon-path": "https://res.cloudinary.com/dnt8zrmow/image/upload/v1722803303/ixomb0h3titz9lcth1zx.png"
+    },
+    {
+        "app-name": "That's Fontastic",
+        "context": "When provided an image with text, identify the fonts being used.",
+        "icon-path": "https://res.cloudinary.com/dnt8zrmow/image/upload/v1722801929/omzpc1tb9bfqztbgcedd.png"
+    }
+  ]
+}

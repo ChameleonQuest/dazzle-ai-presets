@@ -13,7 +13,7 @@ function GemRunnerContent() {
     let searchParams = useSearchParams();
     let initialContext = searchParams.get('context');
     let iconPath = searchParams.get('iconpath');
-    let { appName } = useParams();
+    let appName = decodeURIComponent(useParams().appName);
     const [showInstallAlert, setShowInstallAlert] = useState(false);
 
     const handleSubmit = () => {
