@@ -6,6 +6,8 @@ import QrCode from '../../components/QrCode';
 import CopyButton from '../../components/CopyButton';
 import Webcam from 'react-webcam';
 import styles from './app-runner.css';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 function GemRunnerContent() {
     const webcamRef = useRef(null);
@@ -101,7 +103,8 @@ function GemRunnerContent() {
                     {promptLog?.messages.map((message, index) => (
                         <div 
                             key={index} 
-                            style={{ 
+                            style={{
+                                display: 'flex',
                                 fontSize: '.7rem', 
                                 fontStyle: message.role === "assistant" ? 'italic' : 'normal',
                                 paddingBottom: '4px'
@@ -111,13 +114,10 @@ function GemRunnerContent() {
                                 src={iconPath}
                                 style={{
                                     height:"20px", 
-                                    position:"relative", 
-                                    top:"5px", 
-                                    paddingRight:"2px",
                                     display: message.role === "assistant" ? 'inline-block' : 'none'
                                     }} />
-                            <span style={{fontWeight: message.role != "assistant" ? '700' : '400'}}>
-                                {message.content}
+                            <span style={{marginLeft:'20px', fontWeight: message.role != "assistant" ? '700' : '400'}}>
+                                <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
                             </span>
                             <div style={{marginLeft:'5px', display: message.role === "assistant" ? 'inline-block' : 'none'}}>
                                 <CopyButton text={message.content} />

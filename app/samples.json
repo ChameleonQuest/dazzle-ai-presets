@@ -16,6 +16,24 @@
         "icon-path": "https://res.cloudinary.com/dnt8zrmow/image/upload/v1722803303/ixomb0h3titz9lcth1zx.png"
     },
     {
+        "app-name": "To English",
+        "context": "When provided an image with text, reply with the language detected, followed by a dash, followed by the text translated into English.",
+        "icon-path": "https://res.cloudinary.com/dnt8zrmow/image/upload/v1722804572/kyt1k0wj5pmvcybab50t.png"
+    },
+    {
+        "app-name": "Food Helper",
+        "context": "When provided an image, identify ingredients and suggest 3 to 5 recipes that could be made with those ingredients. Be brief. Show reference urls after each recipe.",
+        "icon-path": "https://res.cloudinary.com/dnt8zrmow/image/upload/v1722807348/golcvcrimwx8huxgetn7.png"
+    },
+
+    {
+        "app-name": "Food Helper",
+        "context": "When provided an image, identify ingredients and suggest 3 to 5 recipes that could be made with those ingredients. Be brief.",
+        "icon-path": "https://res.cloudinary.com/dnt8zrmow/image/upload/v1722807348/golcvcrimwx8huxgetn7.png"
+    },
+
+
+    {
         "app-name": "That's Fontastic",
         "context": "When provided an image with text, identify the fonts being used.",
         "icon-path": "https://res.cloudinary.com/dnt8zrmow/image/upload/v1722801929/omzpc1tb9bfqztbgcedd.png"
