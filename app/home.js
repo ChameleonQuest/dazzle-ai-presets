@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import './home.css';
-import IconEditor from './components/IconEditor';
+import CloudinaryIconEditor from './components/CloudinaryIconEditor';
 
 export default function HomePage() {
     const [name, setName] = useState('ToEnglish');
@@ -47,7 +47,8 @@ export default function HomePage() {
                     <div className="form-label">App Icon:</div>
                     <div className="form-value">
                         {/* <img src={iconPath} style={{height: '75px', width: '75px'}} /> */}
-                        <IconEditor initialIconPath={iconPath} onSave={setIconPath} />
+                        {/* {iconPath} */}
+                        <CloudinaryIconEditor initialIconPath={iconPath} onUpload={setIconPath} />
                     </div>
                 </div>
                 {/* <div className="form-row">
