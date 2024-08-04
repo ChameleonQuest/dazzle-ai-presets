@@ -3,6 +3,7 @@ import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { useSearchParams, useParams } from 'next/navigation';
 import InstallAlert from '../../components/InstallAlert';
 import QrCode from '../../components/QrCode';
+import CopyButton from '../../components/CopyButton';
 import Webcam from 'react-webcam';
 import styles from './app-runner.css';
 
@@ -107,7 +108,7 @@ function GemRunnerContent() {
                             }}
                         >
                             <img
-                                src="/favicon.ico" 
+                                src={iconPath}
                                 style={{
                                     height:"20px", 
                                     position:"relative", 
@@ -115,7 +116,12 @@ function GemRunnerContent() {
                                     paddingRight:"2px",
                                     display: message.role === "assistant" ? 'inline-block' : 'none'
                                     }} />
-                            {message.content}
+                            <span style={{fontWeight: message.role != "assistant" ? '700' : '400'}}>
+                                {message.content}
+                            </span>
+                            <div style={{marginLeft:'5px', display: message.role === "assistant" ? 'inline-block' : 'none'}}>
+                                <CopyButton text={message.content} />
+                            </div>
                         </div>
                     ))}
                 </div>
