@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { CldImage, CldUploadWidget } from 'next-cloudinary';
+import { CldUploadWidget } from 'next-cloudinary';
 
 function CloudinaryIconEditor({ initialIconPath, onUpload }) {
     const [imageUrl, setImageUrl] = useState(initialIconPath);
@@ -22,6 +22,7 @@ function CloudinaryIconEditor({ initialIconPath, onUpload }) {
                 width="75"
                 height="75"
                 onSuccess={handleUpload}
+                options={{ sources: ['local', 'url', 'camera'] }}
             >
             {({ open }) => (
                 <span onClick={openWidget(open)} className="upload-button" style={{cursor: 'pointer'}}>
