@@ -9,7 +9,7 @@ export default function HomePage() {
     const [context, setContext] = useState('When provided an image with text, reply with the language detected, followed by a dash, followed by the text translated into English.');
     const [prompt, setPrompt] = useState();
     const maxCharacters = 1000;
-    const [iconPath, setIconPath] = useState(`${location.origin}/images/dazzle-icon-512x512.png`);
+    const [iconPath, setIconPath] = useState(`${window.location.origin}/images/dazzle-icon-512x512.png`);
     
     const handleSubmit = e => {
         e.preventDefault(); 
