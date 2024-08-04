@@ -99,27 +99,31 @@ function GemRunnerContent() {
                     {appName}
                 </h1>
 
-                <div>
+                <div style={{display:'block', overflowX:'clip'}}>
                     {promptLog?.messages.map((message, index) => (
                         <div 
                             key={index} 
                             style={{
-                                display: 'flex',
+                                display: 'block',
                                 fontSize: '.7rem', 
                                 fontStyle: message.role === "assistant" ? 'italic' : 'normal',
-                                paddingBottom: '4px'
+                                padding: '0px 4px 4px 4px',
+                                position: 'relative'
                             }}
                         >
                             <img
                                 src={iconPath}
                                 style={{
                                     height:"20px", 
-                                    display: message.role === "assistant" ? 'inline-block' : 'none'
+                                    display: message.role === "assistant" ? 'inline-block' : 'none',
+                                    position: 'absolute',
+                                    top: '0px',
+                                    left: '0px'
                                     }} />
-                            <span style={{marginLeft:'20px', fontWeight: message.role != "assistant" ? '700' : '400'}}>
+                            <div style={{marginLeft:'20px', fontWeight: message.role != "assistant" ? '700' : '400'}}>
                                 <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
-                            </span>
-                            <div style={{marginLeft:'5px', display: message.role === "assistant" ? 'inline-block' : 'none'}}>
+                            </div>
+                            <div style={{marginLeft:'20px', display: message.role === "assistant" ? 'block' : 'none'}}>
                                 <CopyButton text={message.content} />
                             </div>
                         </div>

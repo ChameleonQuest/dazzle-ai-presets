@@ -26,10 +26,18 @@
         "icon-path": "https://res.cloudinary.com/dnt8zrmow/image/upload/v1722807348/golcvcrimwx8huxgetn7.png"
     },
 
+
     {
-        "app-name": "Food Helper",
-        "context": "When provided an image, identify ingredients and suggest 3 to 5 recipes that could be made with those ingredients. Be brief.",
-        "icon-path": "https://res.cloudinary.com/dnt8zrmow/image/upload/v1722807348/golcvcrimwx8huxgetn7.png"
+        "app-name": "What Is It",
+        "context": "What's in this image? Provide a reference url.",
+        "icon-path": "https://res.cloudinary.com/dnt8zrmow/image/upload/v1722810523/ywqctjhg2bfu3y8kyth0.png"
+    },
+
+
+    {
+        "app-name": "Food",
+        "context": "",
+        "icon-path": ""
     },
 
 
