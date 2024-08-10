@@ -7,14 +7,9 @@ import Webcam from 'react-webcam';
 import styles from './app-runner.css';
 import ChatLog from './components/ChatLog';
 
-function AppRunnerContent() {
+function AppRunnerContent({ initialContext, iconPath, appName }) {
     const webcamRef = useRef(null);
     const [imageData, setImageData] = useState(null);
-    let searchParams = useSearchParams();
-    let initialContext = searchParams.get('context');
-    let iconPath = searchParams.get('iconpath');
-    let appName = decodeURIComponent(useParams().appName);
-    const [showInstallAlert, setShowInstallAlert] = useState(false);
 
     const handleSubmit = () => {
         let imageSrc = webcamRef.current.getScreenshot();
@@ -25,36 +20,6 @@ function AppRunnerContent() {
         // Set chat log to just the original AI context;
         setPromptLog({ "messages":initialMessages});
     };
-
-    //// PWA stuff
-    useEffect(() => {
-        let link = document.createElement('link');
-        link.rel = 'manifest';
-        link.href = `/${appName}/api/manifest?context=${encodeURIComponent(initialContext)}}&iconpath=${encodeURIComponent(iconPath)}`;
-        document.head.appendChild(link);
-    }, [appName]);
-
-    useEffect(() => {
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', async () => {
-                navigator.serviceWorker
-                .register(`/${appName}/api/service-worker`, { scope: `/${appName}` })
-                .then((registration) => { })
-                .catch((error) => {
-                    console.log('Service Worker registration failed:', error);
-                });
-            });
-
-            window.addEventListener('beforeinstallprompt', (e) => {
-                setShowInstallAlert(true);
-            });
-
-            window.addEventListener('appinstalled', (event) => {
-                setShowInstallAlert(false);
-            });
-        }
-    }, [appName]);
-    //// End PWA stuff
 
     // Effect to run when imageData changes
     useEffect(() => {
@@ -120,15 +85,50 @@ function AppRunnerContent() {
                     </button>
                 </div>
             </div>
-            {showInstallAlert && ( <InstallAlert /> )}
         </main>
     );
 }
 
-export default function GemRunnerPage() {
+export default function AppRunnerPage() {
+    const [showInstallAlert, setShowInstallAlert] = useState(false);
+    let searchParams = useSearchParams();
+    let initialContext = searchParams.get('context');
+    let iconPath = searchParams.get('iconpath');
+    let appName = decodeURIComponent(useParams().appName);
+
+    //// PWA stuff
+    useEffect(() => {
+        let link = document.createElement('link');
+        link.rel = 'manifest';
+        link.href = `/${appName}/api/manifest?context=${encodeURIComponent(initialContext)}}&iconpath=${encodeURIComponent(iconPath)}`;
+        document.head.appendChild(link);
+    }, [appName]);
+
+    useEffect(() => {
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', async () => {
+                navigator.serviceWorker
+                .register(`/${appName}/api/service-worker`, { scope: `/${appName}` })
+                .then((registration) => { })
+                .catch((error) => {
+                    console.log('Service Worker registration failed:', error);
+                });
+            });
+
+            window.addEventListener('beforeinstallprompt', (e) => {
+                setShowInstallAlert(true);
+            });
+
+            window.addEventListener('appinstalled', (event) => {
+                setShowInstallAlert(false);
+            });
+        }
+    }, [appName]);
+
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            <AppRunnerContent />
+            <AppRunnerContent initialContext={initialContext} iconPath={iconPath} appName={appName} />
+            {showInstallAlert && ( <InstallAlert /> )}
         </Suspense>
     );
 }
