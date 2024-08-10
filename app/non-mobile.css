@@ -41,10 +41,16 @@ textarea {
     height: 4rem;
 }
 
-.qr-code {
+.qr-code-container {
     /* border: red solid; */
     display: flex;
     justify-content: center;
+}
+
+.small-qr, .large-qr {
+    /* border: blue solid; */
+    height: 250px;
+    width: 250px
 }
 
 .page-content {

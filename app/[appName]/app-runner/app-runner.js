@@ -141,7 +141,7 @@ function GemRunnerContent() {
                 <span id="bottom-anchor"></span>
             </div>
             <div id="layout-webcam-block">
-                <div className="qr-code">
+                <div className="qr-code-container">
                     <QrCode />
                 </div>
                 <div className="webcam-wrapper" >

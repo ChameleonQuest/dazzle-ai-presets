@@ -7,6 +7,7 @@ const QrCode = () => {
     const pathname = usePathname();
     const searchParams = useSearchParams();    
     // const router = useRouter();
+    const [qrSize, setQRSize] = useState('small-qr');
     const [url, setUrl] = useState('');
 
     useEffect(() => {
@@ -16,7 +17,11 @@ const QrCode = () => {
     }, [pathname, searchParams]);
     
     return (
-        <QRCodeSVG value={url} size={250} />
+        <QRCodeSVG
+            value={url}
+            className={qrSize}
+            onClick={() => setQRSize(qrSize === 'small-qr' ? "large-qr" : "small-qr")} 
+        />
     );
 };
 

@@ -42,8 +42,28 @@
         height: 4rem;
     }
 
-    .qr-code {
-        display: none;
+    .qr-code-container {
+        /* border: red solid; */
+        display: flex;
+        justify-items: right;
+        /* display: inline-block; */
+        position: absolute;
+        top:8px;
+        right:8px;
+        height: 50px;
+        /* width: 50px; */
+    }
+
+    .small-qr {
+        /* border: blue solid; */
+        height: 50px;
+        width: 50px
+    }
+
+    .large-qr {
+        /* border: blue solid; */
+        height: 250px;
+        width: 250px
     }
 
     .page-content {
