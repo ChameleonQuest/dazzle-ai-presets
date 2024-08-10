@@ -23,6 +23,11 @@ function GemRunnerContent() {
         setImageData(imageSrc);
     };
 
+    const clearChat = () => {
+        // Set chat log to just the original AI context;
+        setPromptLog({ "messages":initialMessages});
+    };
+
     //// PWA stuff
     useEffect(() => {
         let link = document.createElement('link');
@@ -129,6 +134,10 @@ function GemRunnerContent() {
                         </div>
                     ))}
                 </div>
+                <div style={{flexGrow: 1}}></div>
+                <div style={{display: 'flex', justifyContent: 'right', fontSize: '12px', padding: '8px', display: promptLog?.messages?.length > 1 ? 'inherit' : 'none'}}>
+                    <a onClick={clearChat}>clear</a>
+                </div>
                 <span id="bottom-anchor"></span>
             </div>
             <div id="layout-webcam-block">
@@ -152,7 +161,6 @@ function GemRunnerContent() {
                         {isGenerating ? "Generating..." : "Analyze"}
                     </button>
                 </div>
-                {/* <span id="bottom-anchor"></span> */}
             </div>
             {showInstallAlert && ( <InstallAlert /> )}
         </main>
