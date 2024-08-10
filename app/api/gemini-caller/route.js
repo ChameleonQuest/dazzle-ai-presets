@@ -7,7 +7,6 @@ export async function POST(request) {
     // Convert base64 image data to a file for Gemini
     let prompt = params.prompt;
     let base64Data = params.image.split(';base64,')[1];
-    // console.log("prompt",prompt);
 
     let image = [{
         inlineData: {

@@ -5,7 +5,6 @@ import { CldUploadWidget } from 'next-cloudinary';
 function CloudinaryIconEditor({ initialIconPath, onUpload }) {
     const [imageUrl, setImageUrl] = useState(initialIconPath);
     const handleUpload = (result) => {
-        // console.log("result.info", result.info);
         setImageUrl(result.info.secure_url);
         onUpload(result.info.secure_url);
     };

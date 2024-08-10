@@ -41,9 +41,7 @@ function GemRunnerContent() {
             window.addEventListener('load', async () => {
                 navigator.serviceWorker
                 .register(`/${appName}/api/service-worker`, { scope: `/${appName}` })
-                .then((registration) => {
-                    console.log('Service Worker registered with scope:', registration.scope);
-                })
+                .then((registration) => { })
                 .catch((error) => {
                     console.log('Service Worker registration failed:', error);
                 });
@@ -74,7 +72,6 @@ function GemRunnerContent() {
             .then(data => {
                 let updatedMessages = [...promptLog.messages, { role: "assistant", content: data }];
                 setPromptLog({messages: updatedMessages});
-                console.log('Response:', data);
                 setTimeout(() => scrollWindow() , 200);
                 setIsGenerating(false);
             })
