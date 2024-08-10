@@ -3,13 +3,11 @@ import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { useSearchParams, useParams } from 'next/navigation';
 import InstallAlert from '../../components/InstallAlert';
 import QrCode from '../../components/QrCode';
-import CopyButton from '../../components/CopyButton';
 import Webcam from 'react-webcam';
 import styles from './app-runner.css';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import ChatLog from './components/ChatLog';
 
-function GemRunnerContent() {
+function AppRunnerContent() {
     const webcamRef = useRef(null);
     const [imageData, setImageData] = useState(null);
     let searchParams = useSearchParams();
@@ -81,8 +79,6 @@ function GemRunnerContent() {
             });
         }
     }, [imageData]);
-    ////
-    ////
 
     let initialMessages = [ {"role": "system", "content": initialContext} ];
 
@@ -101,41 +97,7 @@ function GemRunnerContent() {
                     {appName}
                 </h1>
 
-                <div style={{display:'block', overflowX:'clip'}}>
-                    {promptLog?.messages.map((message, index) => (
-                        <div 
-                            key={index} 
-                            style={{
-                                display: 'block',
-                                fontSize: '.7rem', 
-                                fontStyle: message.role === "assistant" ? 'italic' : 'normal',
-                                padding: '0px 4px 4px 4px',
-                                position: 'relative'
-                            }}
-                        >
-                            <img
-                                src={iconPath}
-                                style={{
-                                    height:"20px", 
-                                    display: message.role === "assistant" ? 'inline-block' : 'none',
-                                    position: 'absolute',
-                                    top: '0px',
-                                    left: '0px'
-                                    }} />
-                            <div style={{marginLeft:'20px', fontWeight: message.role != "assistant" ? '700' : '400'}}>
-                                <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
-                            </div>
-                            <div style={{marginLeft:'20px', display: message.role === "assistant" ? 'block' : 'none'}}>
-                                <CopyButton text={message.content} />
-                            </div>
-                        </div>
-                    ))}
-                </div>
-                <div style={{flexGrow: 1}}></div>
-                <div style={{display: 'flex', justifyContent: 'right', fontSize: '12px', padding: '8px', display: promptLog?.messages?.length > 1 ? 'inherit' : 'none'}}>
-                    <a onClick={clearChat}>clear</a>
-                </div>
-                <span id="bottom-anchor"></span>
+                <ChatLog messages={promptLog?.messages} iconPath={iconPath} clearChat={clearChat} />
             </div>
             <div id="layout-webcam-block">
                 <div className="qr-code-container">
@@ -153,7 +115,6 @@ function GemRunnerContent() {
                     />
                 </div>
                 <div style={{display: 'flex', justifyContent: 'center', padding: '8px'}}>
-                    {/* <textarea type="text" placeholder="prompt" value={newPrompt} onChange={(e) => setNewPrompt(e.target.value)} style={{height:'55px'}} /> */}
                     <button onClick={handleSubmit} disabled={isGenerating} style={{alignSelf: 'center', width: '250px'}}>
                         {isGenerating ? "Generating..." : "Analyze"}
                     </button>
@@ -167,7 +128,7 @@ function GemRunnerContent() {
 export default function GemRunnerPage() {
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            <GemRunnerContent />
+            <AppRunnerContent />
         </Suspense>
     );
 }
