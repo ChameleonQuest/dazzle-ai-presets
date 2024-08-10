@@ -1,4 +1,3 @@
-// /app/api/service-worker/[appName]/route.js
 export async function GET(req, { params }) {
     const { appName } = params;
   

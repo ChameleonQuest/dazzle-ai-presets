@@ -14,11 +14,6 @@ export async function GET(req, { params }) {
       background_color: "#cccccc",
       description: `${appName} PWA`,
       icons: [
-        // {
-        //   src: `${iconPath}`,
-        //   sizes: "192x192",
-        //   type: `image/${iconExtension}`
-        // },
         {
           src: `${iconPath}`,
           sizes: "192x192 512x512",

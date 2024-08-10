@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 html, body {
-    /* max-width: 100vw; */
     overflow-x: hidden;
     background: rgba(50, 50, 50, 0.2);
 
@@ -10,13 +9,8 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* color: black; */
     height: 100%;
     width: 100%;
-    /* background-image: url('/images/dazzle-icon-512x512.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;   */
 }
 
 html, body, input, button, textarea {
@@ -37,19 +31,15 @@ form {
     justify-items: start;
     justify-content: center;
     width: 100%;
-    /* border: red solid; */
 }
 
 .form-label {
     display: inline-block;
     text-align: right;
-    /* border: blue solid; */
 }
 
 .form-value {
     display: inline-block;
-    /* background-color: white; */
-    /* border: green solid; */
 }
 
 .form-subscript {
@@ -89,9 +79,7 @@ h1 {
     align-items: center;
     align-self: center;
     display: flex;
-    /* line-height: 3rem; */
     padding-bottom: 24px;
-    /* vertical-align: middle; */
 }
 
 h2 {

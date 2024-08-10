@@ -65,7 +65,7 @@ function GemRunnerContent() {
         if (imageData !== null) {
             setIsGenerating(true);
             
-            fetch('/api/gemini-caller-image', {
+            fetch('/api/gemini-caller', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({"prompt":initialContext, "image":imageData})
@@ -148,7 +148,7 @@ function GemRunnerContent() {
                     <Webcam
                         audio={false}
                         ref={webcamRef}
-                        screenshotFormat="image/png" // Or 'image/jpeg'
+                        screenshotFormat="image/png"
                         className="webcam"
                         videoConstraints={{
                             facingMode: "environment" // other option is "user"

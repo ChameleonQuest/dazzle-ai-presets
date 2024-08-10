@@ -6,7 +6,6 @@ import { usePathname, useSearchParams } from 'next/navigation';
 const QrCode = () => {
     const pathname = usePathname();
     const searchParams = useSearchParams();    
-    // const router = useRouter();
     const [qrSize, setQRSize] = useState('small-qr');
     const [url, setUrl] = useState('');
 

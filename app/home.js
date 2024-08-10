@@ -1,22 +1,17 @@
 "use client";
 
 import { useState } from 'react';
-import './home.css';
 import CloudinaryIconEditor from './components/CloudinaryIconEditor';
 
 export default function HomePage() {
-    const [name, setName] = useState('ToEnglish');
-    const [context, setContext] = useState('When provided an image with text, reply with the language detected, followed by a dash, followed by the text translated into English.');
-    const [prompt, setPrompt] = useState();
+    const [name, setName] = useState('');
+    const [context, setContext] = useState('');
     const maxCharacters = 1000;
     const [iconPath, setIconPath] = useState(`/images/dazzle-icon-512x512.png`);
-    
+        
     const handleSubmit = e => {
-        e.preventDefault(); 
+        e.preventDefault();
         let url = `${name}/app-runner?context=${encodeURIComponent(context)}&iconpath=${encodeURIComponent(iconPath)}`;
-        if (prompt) {
-            url += `&prompt=${encodeURIComponent(prompt)}`;
-        }
         window.open(url, '_blank'); // Open the URL in a new window
     };
 
@@ -32,12 +27,26 @@ export default function HomePage() {
             <form onSubmit={handleSubmit}>
                 <div className="form-row">
                     <div className="form-label">App Name:</div>
-                    <div className="form-value"><input type="text" value={name} onChange={(e) => setName(e.target.value)} /></div>
+                    <div className="form-value">
+                        <input
+                            type="text"
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder=''
+                            value={name}
+                            required
+                        />
+                    </div>
                 </div>
                 <div className="form-row">
                     <div className="form-label">AI Setup:</div>
                     <div className="form-value">
-                        <textarea maxLength="1000" value={context} onChange={(e) => setContext(e.target.value)} />
+                        <textarea
+                            maxLength="1000"
+                            onChange={(e) => setContext(e.target.value)}
+                            placeholder='example: Translate text to English.'
+                            value={context}
+                            required
+                        />
                         <div className="form-subscript">
                             {context.length} / {maxCharacters}
                         </div>
@@ -46,21 +55,9 @@ export default function HomePage() {
                 <div className="form-row">
                     <div className="form-label">App Icon:</div>
                     <div className="form-value">
-                        {/* <img src={iconPath} style={{height: '75px', width: '75px'}} /> */}
-                        {/* {iconPath} */}
                         <CloudinaryIconEditor initialIconPath={iconPath} onUpload={setIconPath} />
                     </div>
                 </div>
-                {/* <div className="form-row">
-                    <div className="form-label">Prompt:</div>
-                    <div className="form-value">
-                        <textarea maxLength="1000" value={prompt} onChange={(e) => setPrompt(e.target.value)} />
-                        <div className="form-subscript">
-                            {prompt.length} / {maxCharacters}
-                        </div>
-                    </div>
-                </div> */}
-
                 <button type="submit" style={{alignSelf: 'center'}}>Try It Out!</button>
             </form>
         </main>

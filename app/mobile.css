@@ -43,37 +43,28 @@
     }
 
     .qr-code-container {
-        /* border: red solid; */
         display: flex;
         justify-items: right;
-        /* display: inline-block; */
         position: absolute;
         top:8px;
         right:8px;
         height: 50px;
-        /* width: 50px; */
     }
 
     .small-qr {
-        /* border: blue solid; */
         height: 50px;
         width: 50px
     }
 
     .large-qr {
-        /* border: blue solid; */
         height: 250px;
         width: 250px
     }
 
     .page-content {
-        /* background-color: orange; */
-        /* border: red solid; */
         border-width:0px;
         border-radius: 0px;
-
         flex-direction: column;
-        /* margin-top: 0px; */
         height: 100%;
         margin: 0px;
         max-height:100%;
@@ -82,10 +73,5 @@
         max-width:100%;
         width: 100%;
         padding: 8px;
-
-        /* top: 0; */
-        /* display: none; */
-        /* left: 0; */
-        /* position: fixed; */
     }
 }
