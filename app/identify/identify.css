@@ -4,7 +4,7 @@ body {
     overflow: hidden;
 }
 
-.spatial-element {
+.spatial-elements {
     position: absolute;
     z-index: 100;
     pointer-events: auto;
@@ -28,6 +28,8 @@ body {
 }
 
 #layout-chat-block {
+    position: fixed;
+    bottom: 84px;
     display: flex;
     min-height: 20px;
     width: 100%;
@@ -50,6 +52,8 @@ body {
 
 .webcam {
     width: 100%;
+    position: fixed;
+    bottom: 350px;
 }
 
 @media (max-width: 768px) {

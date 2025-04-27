@@ -61,7 +61,7 @@ function AppRunnerContent({ initialContext, iconPath, appName }) {
     }
 
     return (
-        <div class="spatial-element" style={{display: 'flex', flexDirection: "column", alignItems: 'center', padding: '8px'}}>
+        <div style={{display: 'flex', flexDirection: "column", alignItems: 'center', padding: '8px'}}>
             <Webcam
                 audio={false}
                 ref={webcamRef}
