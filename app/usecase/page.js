@@ -2,7 +2,7 @@
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import Webcam from 'react-webcam';
 import styles from './identify.css';
-import ChatLog from '../../[appName]/app-runner/components/ChatLog';
+import ChatLog from '../[appName]/app-runner/components/ChatLog';
 
 function AppRunnerContent({ initialContext, iconPath, appName }) {
     const webcamRef = useRef(null);
