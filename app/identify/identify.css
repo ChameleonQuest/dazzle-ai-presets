@@ -40,6 +40,7 @@ body {
     max-height:250px;
     /* border: red solid; */
     background-color:white;
+    overflow: scroll;
 }
 
 #layout-webcam-block {
