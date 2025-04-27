@@ -18,7 +18,7 @@ Note the app name is in the route. The PWA is scoped at this level. By default, 
 to the domain, but this only allows the website to be downloaded once at the domain level. By scoping the PWA at the first part of the path, this allows the user to save multiple PWA apps off of this one site.
 
 ## Setup
-The Gemini API key should be set up as an environment variable with name
+The Gemini API key should be set up as an environment variable with name. A standard way to do this for local development is to create a file called .env.local and place the values there. Git will not typically upload these sensitive settings to the code repo.
 
 API_KEY
 
