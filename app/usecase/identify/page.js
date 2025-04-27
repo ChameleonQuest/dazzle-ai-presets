@@ -72,14 +72,14 @@ function AppRunnerContent({ initialContext, iconPath, appName }) {
             </div>
 
             <Webcam
-                    audio={false}
-                    ref={webcamRef}
-                    screenshotFormat="image/png"
-                    className="webcam"
-                    videoConstraints={{
-                        facingMode: "environment" // other option is "user"
-                    }}
-                />
+                audio={false}
+                ref={webcamRef}
+                screenshotFormat="image/png"
+                className="webcam"
+                videoConstraints={{
+                    facingMode: "environment" // other option is "user"
+                }}
+            />
 
             <button onClick={handleSubmit} disabled={isGenerating} style={{alignSelf: 'center', width: '250px'}}>
                 {isGenerating ? "Generating..." : "Analyze"}
