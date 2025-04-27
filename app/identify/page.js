@@ -2,7 +2,7 @@
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import Webcam from 'react-webcam';
 import styles from './identify.css';
-import ChatLog from '../../[appName]/app-runner/components/ChatLog';
+import ChatLog from '../[appName]/app-runner/components/ChatLog';
 
 function AppRunnerContent({ initialContext, iconPath, appName }) {
     const webcamRef = useRef(null);
@@ -61,16 +61,7 @@ function AppRunnerContent({ initialContext, iconPath, appName }) {
     }
 
     return (
-        <div class="spatial-element" style={{border: 'green solid', display: 'flex', justifyContent: 'center', padding: '8px'}}>
-            <div id="layout-chat-block">
-                <h1>
-                    <img src={iconPath} style={{height: '2.5rem', width: '2.5rem', marginRight: '5px'}} />
-                    {appName}
-                </h1>
-
-                <ChatLog messages={promptLog?.messages} iconPath={iconPath} clearChat={clearChat} />
-            </div>
-
+        <div class="spatial-element" style={{border: 'green solid', display: 'flex', flexDirection: "column", alignItems: 'center', padding: '8px'}}>
             <Webcam
                 audio={false}
                 ref={webcamRef}
@@ -80,6 +71,16 @@ function AppRunnerContent({ initialContext, iconPath, appName }) {
                     facingMode: "environment" // other option is "user"
                 }}
             />
+
+            <div id="layout-chat-block">
+                <h1>
+                    <img src={iconPath} style={{height: '2.5rem', width: '2.5rem', marginRight: '5px'}} />
+                    {appName}
+                </h1>
+
+                <ChatLog messages={promptLog?.messages} iconPath={iconPath} clearChat={clearChat} />
+            </div>
+
 
             <button onClick={handleSubmit} disabled={isGenerating} style={{alignSelf: 'center', width: '250px'}}>
                 {isGenerating ? "Generating..." : "Analyze"}

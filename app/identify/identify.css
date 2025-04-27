@@ -43,7 +43,7 @@ body {
 }
 
 .webcam {
-    width: 10px;
+    width: 50%;
 }
 
 @media (max-width: 768px) {
@@ -72,6 +72,6 @@ body {
     }
 
     .webcam {
-        width: 100%;
+        width: 50%;
     }
 }
