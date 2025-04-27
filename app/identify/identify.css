@@ -24,14 +24,16 @@ body {
     max-width:100%;
     width: 100%;
     padding: 8px;
-    border: black solid;
+    /* border: black solid; */
 }
 
 #layout-chat-block {
     display: flex;
     height: 100px;
+    width: 100%;
     margin: 0px;
-    border: red solid;
+    /* border: red solid; */
+    background-color:white;
 }
 
 #layout-webcam-block {
@@ -43,7 +45,7 @@ body {
 }
 
 .webcam {
-    width: 50%;
+    width: 70%;
 }
 
 @media (max-width: 768px) {
@@ -69,9 +71,5 @@ body {
         width: 100%;
         position: relative;
         overflow: hidden;
-    }
-
-    .webcam {
-        width: 50%;
     }
 }

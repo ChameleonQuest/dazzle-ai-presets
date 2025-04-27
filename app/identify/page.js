@@ -43,12 +43,12 @@ function AppRunnerContent({ initialContext, iconPath, appName }) {
     }, [imageData]);
 
     // spatializer.js allows real world to be seen when viewed with an AR device.
-    useEffect(() => {
-        const script = document.createElement('script');
-        script.type = 'module';
-        script.src = '/spatializer.js';
-        document.body.appendChild(script);
-    }, []);
+    // useEffect(() => {
+    //     const script = document.createElement('script');
+    //     script.type = 'module';
+    //     script.src = '/spatializer.js';
+    //     document.body.appendChild(script);
+    // }, []);
 
       
     let initialMessages = [ {"role": "system", "content": initialContext} ];
@@ -61,7 +61,7 @@ function AppRunnerContent({ initialContext, iconPath, appName }) {
     }
 
     return (
-        <div class="spatial-element" style={{border: 'green solid', display: 'flex', flexDirection: "column", alignItems: 'center', padding: '8px'}}>
+        <div class="spatial-element" style={{display: 'flex', flexDirection: "column", alignItems: 'center', padding: '8px'}}>
             <Webcam
                 audio={false}
                 ref={webcamRef}
@@ -73,10 +73,10 @@ function AppRunnerContent({ initialContext, iconPath, appName }) {
             />
 
             <div id="layout-chat-block">
-                <h1>
+                {/* <h1>
                     <img src={iconPath} style={{height: '2.5rem', width: '2.5rem', marginRight: '5px'}} />
                     {appName}
-                </h1>
+                </h1> */}
 
                 <ChatLog messages={promptLog?.messages} iconPath={iconPath} clearChat={clearChat} />
             </div>
