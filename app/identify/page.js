@@ -73,16 +73,11 @@ function AppRunnerContent({ initialContext, iconPath, appName }) {
             />
 
             <div id="layout-chat-block">
-                {/* <h1>
-                    <img src={iconPath} style={{height: '2.5rem', width: '2.5rem', marginRight: '5px'}} />
-                    {appName}
-                </h1> */}
-
                 <ChatLog messages={promptLog?.messages} iconPath={iconPath} clearChat={clearChat} />
             </div>
 
-
-            <button onClick={handleSubmit} disabled={isGenerating} style={{alignSelf: 'center', width: '250px'}}>
+            
+            <button onClick={handleSubmit} disabled={isGenerating} style={{alignSelf: 'center', width: '250px', position:'fixed', bottom:'16px'}}>
                 {isGenerating ? "Generating..." : "Analyze"}
             </button>
         </div>

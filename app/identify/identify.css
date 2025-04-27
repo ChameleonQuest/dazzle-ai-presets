@@ -29,9 +29,13 @@ body {
 
 #layout-chat-block {
     display: flex;
-    height: 100px;
+    min-height: 20px;
     width: 100%;
     margin: 0px;
+    margin-top:16px;
+    padding-left:4px;
+    padding-top:4px;
+    max-height:250px;
     /* border: red solid; */
     background-color:white;
 }
@@ -45,7 +49,7 @@ body {
 }
 
 .webcam {
-    width: 70%;
+    width: 100%;
 }
 
 @media (max-width: 768px) {
