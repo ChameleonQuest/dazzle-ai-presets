@@ -17,6 +17,9 @@ as follows.
 Note the app name is in the route. The PWA is scoped at this level. By default, PWAs are scoped
 to the domain, but this only allows the website to be downloaded once at the domain level. By scoping the PWA at the first part of the path, this allows the user to save multiple PWA apps off of this one site.
 
+## Exception
+There's a one off folder here called "identify". This is a spinoff app which utilizes the backend image api. Where Dazzle is an app generator, Identify is a specific sample app. The entire "identify" folder can be deleted and it should not stop Dazzle from running.
+
 ## Setup
 The Gemini API key should be set up as an environment variable with name. A standard way to do this for local development is to create a file called .env.local and place the values there. Git will not typically upload these sensitive settings to the code repo.
 
