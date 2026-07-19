@@ -8,14 +8,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-return (
-    <html lang="en">
-    <body>
-        <div style={{position: 'fixed', bottom: '4px', left: '4px', fontSize: '8px'}}>
-            {process.env.NEXT_PUBLIC_BUILD_TIME}
-        </div>
-        {children}
-    </body>
-    </html>
-);
+    return (
+        <html lang="en">
+            <body>
+                <div style={{ position: 'fixed', bottom: '4px', left: '4px', fontSize: '8px' }}>
+                    Last Build: {process.env.NEXT_PUBLIC_BUILD_TIME}
+                </div>
+                {children}
+            </body>
+        </html>
+    );
 }
