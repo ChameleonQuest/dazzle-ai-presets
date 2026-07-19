@@ -12,7 +12,7 @@ return (
     <html lang="en">
     <body>
         <div style={{position: 'fixed', bottom: '4px', left: '4px', fontSize: '8px'}}>
-            20250427.1505
+            {process.env.NEXT_PUBLIC_BUILD_TIME}
         </div>
         {children}
     </body>
