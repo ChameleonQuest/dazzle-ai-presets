@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
                 <div style={{ position: 'fixed', bottom: '4px', left: '4px', fontSize: '8px' }}>
                     Last Build: {process.env.NEXT_PUBLIC_BUILD_TIME}
                     <br />
-                    model: {process.env.NEXT_PUBLIC_GEMINI_MODEL}
+                    model: {process.env.NEXT_PUBLIC_GEMINI_MODEL || "gemini-3.5-flash"}
                 </div>
                 {children}
             </body>
