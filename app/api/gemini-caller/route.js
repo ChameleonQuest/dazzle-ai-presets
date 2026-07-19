@@ -19,7 +19,8 @@ export async function POST(request) {
     // console.log("prompt: ", prompt);
     // console.log("base64Data: ", base64Data);
     try {
-        let model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
+        let modelName = process.env.NEXT_PUBLIC_GEMINI_MODEL;
+        let model = genAI.getGenerativeModel({ model: modelName });
         let result = await model.generateContent([prompt, ...image]);
         let response = await result.response;
         let theoutput = response?.text();
